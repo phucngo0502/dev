@@ -1,0 +1,70 @@
+{{extend 'layout/lich1/layout.html'}}
+
+<div id="wrapper">
+	<div id="header" >
+    	<h2 class="name">LỊCH CÔNG TÁC</h2>
+    </div>
+	<div id="event_box">	
+			{{=portlet.display(20)}}
+		<div class="event_show">
+				<marquee scrollamount="3">
+						{{#=XML(event)}}
+				</marquee>
+		</div>
+		
+		
+	</div>
+    <div id="main_content">
+    	<div class="left">
+		        
+        	<div id="box" class="box box2row box_do box_logo">
+   				<div class="content ">
+					<div class="hinh_anh">
+						{{=IMG(_src=URL(r=request,c='static',f='template/lich1/images/logo.png'),_style='width:115px;')}}
+					</div>
+                </div>  
+                <h2 class="title_box" style='text-align:center;margin: 5px;'>SỞ TNMT TỈNH HÀ TĨNH</h2>
+			</div>
+
+			<div id="box_thongbao" class="box box2row box_xanh_pbc">
+				<div class="content ">
+					{{=portlet.display(22)}}
+				</div>
+			<h2 class="title_box">Lịch trong tuần</h2>
+			</div>
+				
+               
+        </div>
+        <div class="main">
+        		<div id="box" class="box box2row box_xanh_do_b3 box_h2"> 
+                	<div class="content ">
+					<div id="box_edit_default">
+						<div  id="ticker">
+							
+							{{=portlet.display(21)}}
+						 </div>
+					 </div>
+
+                    </div>  
+                </div>
+             
+                 <div id="box" class="box box2row box_do">
+                  <div class="content">
+				  <script src="{{=URL(c='static',f='template/lich1/js/common.js')}}" type="text/javascript"></script>
+				  <script src="{{=URL(c='static',f='template/lich1/js/jcarousellite_1.0.1.min.js')}}" type="text/javascript"></script>
+					{{from plugin_calendar import crawler_rss}}
+					{{=crawler_rss('http://dantri.com.vn/xa-hoi.rss')}}
+				 </div>      
+                 </div>
+                
+        </div>
+
+		</div>
+</div>
+<!-- Activate live tiles -->
+<script type="text/javascript">
+    // apply regular slide universally unless .exclude class is applied 
+    // NOTE: The default options for each liveTile are being pulled from the 'data-' attributes
+    $(".live-tile, .flip-list").not(".exclude").liveTile();
+</script>
+

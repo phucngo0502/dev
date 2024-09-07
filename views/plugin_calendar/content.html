@@ -1,0 +1,9 @@
+{{extend 'layout.html'}}
+<div class="row">
+	<div class="col-lg-12">
+		{{ from plugin_process import ProcessCms
+			=ProcessCms().menu_breadcrumb()
+		}}
+		{{=content}}
+    </div>
+</div>

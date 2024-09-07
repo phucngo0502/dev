@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html class="no-js" lang="{{=T.accepted_language or 'en'}}">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>Đăng nhập | Ghép hàng</title>
+		<link rel="shortcut icon" href="{{=URL('static','images/favicon.ico')}}" type="image/x-icon">
+		<!-- Tell the browser to be responsive to screen width -->
+		<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+		<!-- Bootstrap 3.3.6 -->
+		<link rel="stylesheet" href="{{=URL('static','AdminLTE/bootstrap/css/bootstrap.min.css')}}">
+		<!-- Theme style -->
+		<link rel="stylesheet" href="{{=URL('static','AdminLTE/dist/css/AdminLTE.min.css')}}">
+		<!-- iCheck -->
+		<link rel="stylesheet" href="{{=URL('static','AdminLTE/plugins/iCheck/square/blue.css')}}">
+		 <!-- Template CSS -->
+		<link href="{{=URL('static','css/login.css')}}" rel="stylesheet">
+		
+		<link rel="shortcut icon" href="//Bahadi.vn/cms/static/site/Bahadi/template/default/favicon.png">
+		<meta name="description" content=" Ghép hàng - Ghép hàng - Ứng dụng ghép hàng và giao hàng siêu tốc">
+		<meta name="keywords" content="Ghép hàng - Ghép hàng - Ứng dụng ghép hàng và giao hàng siêu tốc">
+		<meta property="og:type" content="article">
+		<meta property="og:title" content="Đăng nhập | Ghép hàng - Ghép hàng - Ứng dụng ghép hàng và giao hàng siêu tốc">
+		<meta property="og:description" content="Ghép hàng - Ghép hàng - Ứng dụng ghép hàng và giao hàng siêu tốc">
+		
+		 
+		{{block head}}{{end}}
+		
+		 
+
+
+
+	</head>
+	<body class="hold-transition login-page" style='background:url(../../static/images/bg-login.jpg);background-size: cover;'>
+		<div style='text-align:center;'>
+			
+		
+		<div style='; margin:0 auto;'>
+			<div class="login-box">  
+			  <!-- /.login-logo -->
+			  <div class="login-box-body">
+				<img src="https://quanly.ghephang.com/gh/en/static/assets/images/nasologo.png" alt="Ghép Hàng" style="width: 280px; margin-bottom: 30px;">
+				<div class="col-sm-12">
+				(*) Chức năng chờ cấp Brandname. Khách hàng vui lòng đăng nhập bằng tài khoản.
+				<div class='clearfix text-center'><br/></div>
+				</div>
+					<div class="col-sm-12">
+						<input class="form-control string" id="phone_login" name="phone_login" pattern="/([\+84|84|0]+(3|5|7|8|9|1[2|6|8|9]))+([0-9]{8})\b/
+" placeholder="Nhập số điện thoại">
+						<span class="glyphicon glyphicon-phone form-control-feedback"></span>
+					</div>
+				
+				<div class="col-sm-12  form-group" id="submit_record__row">
+					<a class="btn btn-primary"  style="  width: 100%;   margin-top: 20px;" href="{{=URL(c='plugin_auth',f='otp_login')}}">Gửi OTP </a>
+				</div>
+				
+				<div class='clearfix text-center'><br/>
+					Đăng nhập bằng
+				</div>
+				
+				<div class="col-sm-12  form-group" >
+					<a class='btn btn-default btn_login_phone' href="{{=URL(c='plugin_auth',f='login')}}" style="   width: 100%;  margin-top: 11px;    text-transform: uppercase;"> 						Tài khoản 	
+					</a>
+				</div>
+				<div class='clearfix text-center'>
+					<br/>
+					<br/>
+					 
+				</div>
+				
+				 
+			  </div>
+			  <!-- /.login-box-body -->
+			</div>
+		</div>
+		</div>
+		<!-- /.login-box -->
+		<!-- jQuery 2.2.3 -->
+		<script src="{{=URL('static','AdminLTE/plugins/jQuery/jquery-2.2.3.min.js')}}"></script>
+		<!-- Bootstrap 3.3.6 -->
+		<script src="{{=URL('static','AdminLTE/bootstrap/js/bootstrap.min.js')}}"></script>
+		<!-- iCheck -->
+		<script src="{{=URL('static','AdminLTE/plugins/iCheck/icheck.min.js')}}"></script>
+		 
+		</body>
+</html>

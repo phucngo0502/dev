@@ -1,0 +1,136 @@
+{{extend 'layout.html'}}
+
+<script src="{{=URL(r=request,c='static',f='plugin_app/jtree/lib/jquery.cookie.js')}}" type="text/javascript"></script>
+<script src="{{=URL(r=request,c='static',f='plugin_app/jtree/jquery.treeview.js')}}" type="text/javascript"></script>
+<link href="{{=URL(r=request,c='static',f='plugin_app/jtree/jquery.treeview.css')}}" rel="stylesheet" type="text/css" />
+
+<script src="{{=URL('static','plugins/bootbox/bootbox.min.js')}}"></script>
+
+<script src="{{=URL(r=request,c='static',f='plugin_app/select2/select2.min.js')}}" type="text/javascript"></script>
+<link href="{{=URL(r=request,c='static',f='plugin_app/select2/select2.css')}}" rel="stylesheet" type="text/css" />
+
+
+<script type="text/javascript">
+	function CheckAll() {
+		$('#explorer_view :checkbox').each(function () {
+			$(this).prop('checked', document.getElementById("check_all").checked);
+		});         
+	};  
+
+	$(document).ready(function() {
+		$(".js-example-basic-multiple").select2();
+		$(".js-example-basic-single").select2();	
+		
+	});
+</script>
+
+
+<div class="row">
+	<div class="col-lg-12">
+		{{=content}}
+    </div>
+</div>
+
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('.button_process_True').click(function () {
+			if ($("#explorer_view input:checked").length == 0) {
+				return 0;
+			}
+			var r=confirm( "Chấp nhận " + $(this).children('span').children('span').html() + " " + $(".objects:checked").length.toString() + " dữ liệu đã chọn?");
+			if (r==false) {
+				return 0;
+			} 
+			var id = $(this).attr("id").split('_')[1];
+			var data = $.map($("#explorer_view input:checked"), function(elem, idx) {return "&"+$(elem).attr("name")+"="+ $(elem).val();}).join('');	
+			if ((!isNaN(id) && (function(x) { return (x | 0) === x; })(parseFloat(id)))==false) {
+				window.location.replace("{{=URL(f='fff',args=request.args,vars=request.vars)}}?".replace("fff",id)+data);
+				return 0;
+			}
+			data = data + "&process=" + id;
+			$.ajax({
+				url: "{{=URL(r=request,c='plugin_process',f='process.load',args=request.args,vars=request.vars)}}",
+				type: "GET",
+				data: data,
+				cache: true,
+				success: function (html) {
+					if (html!='') {
+						$("#CallBackModal").html(html);
+						$("#CallBackModal").modal('show');
+					}
+				}
+			});				
+		});		
+
+		$('.button_process_False').click(function () {
+			if ($("#explorer_view input:checked").length == 0) {
+				return 0;
+			}
+			var id = $(this).attr("id").split('_')[1];
+			if ((!isNaN(id) && (function(x) { return (x | 0) === x; })(parseFloat(id)))==false) {
+				window.location.replace("{{=URL(f='fff',args=request.args,vars=request.vars)}}".replace("fff",id));
+				return 0;
+			}
+			var data = $.map($("#explorer_view input:checked"), function(elem, idx) {return "&"+$(elem).attr("name")+"="+ $(elem).val();}).join('');	
+			data = data + "&process=" + id;
+			$.ajax({
+				url: "{{=URL(r=request,c='plugin_process',f='process.load',args=request.args,vars=request.vars)}}",
+				type: "GET",
+				data: data,
+				cache: true,
+				success: function (html) {
+					if (html!='') {
+						//$.colorbox({html:html});
+						$("#CallBackModal").html(html);
+						$("#CallBackModal").modal('show');
+					}
+				}
+			});				
+		});		
+
+		$('.button_process_lock').click(function () {
+			if ($("#explorer_view input:checked").length == 0) {
+				return 0;
+			}
+			
+			var comment = prompt("{{=T('Lý do check in')}}", "cập nhật phiên bản mới");
+			if (comment == null) {
+				return 0;
+			}			
+			
+			var data = $.map($("#explorer_view input:checked"), function(elem, idx) {return "&"+$(elem).attr("name")+"="+ $(elem).val();}).join('');	
+			data = data + "&comment_lock="+comment+"&process=" + $(this).attr("id").split('_')[1];
+			$.ajax({
+				url: "{{=URL(r=request,c='plugin_process',f='process.load',args=request.args,vars=request.vars)}}",
+				type: "GET",
+				data: data,
+				cache: true,
+				success: function (html) {
+					location.reload();
+				}
+			});				
+		});			
+
+		$('.button_process_unlock').click(function () {
+			if ($("#explorer_view input:checked").length == 0) {
+				return 0;
+			}
+			var data = $.map($("#explorer_view input:checked"), function(elem, idx) {return "&"+$(elem).attr("name")+"="+ $(elem).val();}).join('');	
+			data = data + "&comment_unlock=''&process=" + $(this).attr("id").split('_')[1];
+			$.ajax({
+				url: "{{=URL(r=request,c='plugin_process',f='process.load',args=request.args,vars=request.vars)}}",
+				type: "GET",
+				data: data,
+				cache: true,
+				success: function (html) {
+					location.reload();
+				}
+			});				
+		});				
+		
+	});
+</script>
+
+<div id="CallBackModal" class="modal fade">
+</div>

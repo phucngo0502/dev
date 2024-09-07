@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+{{include 'layout/js.html'}}
+{{include 'layout/home13.html_js_css.html'}}
+<body>
+<div class="container">
+<html>
+ <body>
+  <div class="row clearfix">
+   <div class="col-md-12 column ui-sortable">
+    <div class="row clearfix">
+     <div class="col-md-12 column ui-sortable">
+      {{=portlet.display(1)}}
+      {{=portlet.display(2)}}
+     </div>
+    </div>
+    <div class="row clearfix" id="main_page">
+     <div class="col-md-3 column hidden-sm hidden-xs ui-sortable" id="sidebar_left">
+      {{=portlet.display(5)}}
+      {{=portlet.display(7)}}
+     </div>
+     <div class="col-md-9 column ui-sortable" id="main_content">
+      {{include}}
+     </div>
+    </div>
+    <div class="row clearfix">
+     <div class="col-md-12 column ui-sortable">
+     </div>
+    </div>
+   </div>
+  </div>
+ </body>
+</html>
+</div>
+</body>
+</html>

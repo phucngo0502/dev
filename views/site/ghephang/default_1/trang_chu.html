@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="vn">
+ 
+<head>
+    {{=cms.metadc()}}
+    {{include 'web2py_ajax.html'}}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet'  href='{{=URL("static","%s/css")%(static_default)}}/classic-themes.min68b3.css'  type='text/css' media='all'/>
+    <link rel='stylesheet'  href='{{=URL("static","%s/css")%(static_default)}}/style.min6a4d.css? ' type='text/css' media='all'/>
+    <link rel='stylesheet'  href='{{=URL("static","%s/css")%(static_default)}}/styles77e1.css' type='text/css' media='all'/>
+    <link rel='stylesheet'  href='{{=URL("static","%s/css")%(static_default)}}/style6a4d.css? ' type='text/css' media='all'/>
+    <link rel='stylesheet'  href='https://fonts.googleapis.com/css?family=Raleway%3A100%2C200%2C300%2C400%2C500%2C600%2C700%2C800%2C900%2C100italic%2C200italic%2C300italic%2C400italic%2C500italic%2C600italic%2C700italic%2C800italic%2C900italic%7CLato%3A100%2C200%2C300%2C400%2C500%2C600%2C700%2C800%2C900%2C100italic%2C200italic%2C300italic%2C400italic%2C500italic%2C600italic%2C700italic%2C800italic%2C900italic%7CCabin%3A100%2C200%2C300%2C400%2C500%2C600%2C700%2C800%2C900%2C100italic%2C200italic%2C300italic%2C400italic%2C500italic%2C600italic%2C700italic%2C800italic%2C900italic%7CLibre+Baskerville%3A100%2C200%2C300%2C400%2C500%2C600%2C700%2C800%2C900%2C100italic%2C200italic%2C300italic%2C400italic%2C500italic%2C600italic%2C700italic%2C800italic%2C900italic%7CRaleway%3A100%2C200%2C300%2C400%2C500%2C600%2C700%2C800%2C900%2C100italic%2C200italic%2C300italic%2C400italic%2C500italic%2C600italic%2C700italic%2C800italic%2C900italic&amp;subset=latin%2Clatin-ext&amp;ver=1.0.0'
+          type='text/css' media='all'/>
+          
+    <script type='text/javascript' src='{{=URL("static","%s/js")%(static_default)}}/jquery/jquery.mina7a0.js?ver=3.6.1' id='jquery-core-js'></script>
+    <script type='text/javascript' src='{{=URL("static","%s/js")%(static_default)}}/jquery/jquery-migrate.mind617.js'></script>
+    
+    <script type='text/javascript' src='{{=URL("static","%s/js")%(static_default)}}/jquery.dd6a4d.js' ></script>
+    <script type='text/javascript' src='{{=URL("static","%s/js")%(static_default)}}/cc.main6a4d.js'></script>
+     
+    <script type='text/javascript' src='{{=URL("static","%s/js")%(static_default)}}/bt_elements6a4d.js'></script>
+    <script type='text/javascript' src='{{=URL("static","%s/js")%(static_default)}}/jquery.magnific-popup.min6a4d.js'></script>
+    <script type='text/javascript' src='{{=URL("static","%s/js")%(static_default)}}/slick.min6a4d.js' ></script>
+    <script type='text/javascript' src='{{=URL("static","%s/js")%(static_default)}}/fancySelect6a4d.js' ></script>
+    <script type='text/javascript' src='{{=URL("static","%s/js")%(static_default)}}/misc6a4d.js' ></script>
+    <script type='text/javascript' src='{{=URL("static","%s/js")%(static_default)}}/header.misc6a4d.js' ></script>
+    <script type='text/javascript' src='{{=URL("static","%s/js")%(static_default)}}/dir.hover6a4d.js' ></script>
+    <script type='text/javascript' src='{{=URL("static","%s/js")%(static_default)}}/sliders6a4d.js' ></script>
+
+
+</head>
+
+<body class="home page-template-default page page-id-728 bodyPreloader btMenuRightEnabled btStickyEnabled btLightSkin btTopToolsInMenuArea btMenuGutter btNoSidebar">
+
+
+<div class="btPageWrap" id="top">
+
+    <header class="mainHeader btClear">
+        <div class="port">
+            <div class="menuHolder btClear">
+                <div class="btVerticalMenuTrigger">&nbsp;<div class="btIco borderless extrasmall"><a href="#" data-ico-fa="&#xf0c9;"  class="btIcoHolder"></a>
+                </div>
+                </div>
+                <div class="btHorizontalMenuTrigger">&nbsp;<div class="btIco borderless extrasmall"><a href="#" data-ico-fa="&#xf0c9;" class="btIcoHolder"></a>
+                </div>
+                </div>
+                <div class="logo">
+					<span>
+						<a href="index.html"><img class="btMainLogo" src='{{=URL("static","%s/images")%(static_default)}}/logo.png'  alt="Delivery Express"> </a>		
+                        </span>
+                </div><!-- /logo -->
+                <div class="menuPort">
+                    <!-- <div class="topBarInMenu"> -->
+                        <!-- <div class="topBarInMenuCell"> -->
+                            <!-- <div class="btTopBox widget_search"> -->
+                                <!-- <div class="btSearch"> -->
+                                    <!-- <div class="btIco default extrasmall"><a href="#" data-ico-fa="&#xf002;" -->
+                                                                             <!-- class="btIcoHolder"></a></div> -->
+                                    <!-- <div class="btSearch"> -->
+                                        <!-- <div class="btSearchInner" role="search"> -->
+                                            <!-- <div class="btSearchInnerContent"> -->
+                                                <!-- <div  method="get"> -->
+                                                    <!-- <input type="text" name="s"  placeholder="Looking for..." class="untouched"> -->
+                                                    <!-- <button type="submit" data-icon="&#xf105;"></button> -->
+                                                <!-- </div> -->
+                                                <!-- <div class="btSearchInnerClose"> -->
+                                                    <!-- <div class="btIco borderless small"><a href="#" -->
+                                                                                           <!-- data-ico-fa="&#xf00d;" -->
+                                                                                           <!-- class="btIcoHolder"></a> -->
+                                                    <!-- </div> -->
+                                                <!-- </div> -->
+                                            <!-- </div> -->
+                                        <!-- </div> -->
+                                    <!-- </div> -->
+                                <!-- </div> -->
+                            <!-- </div> -->
+                            <!-- <div class="btIco borderless extrasmall"><a href="https://www.facebook.com/boldthemes/" -->
+                                                                        <!-- target="_blank" data-ico-fa="&#xf09a;" -->
+                                                                        <!-- class="btIcoHolder"></a></div> -->
+                            <!-- <div class="btIco borderless extrasmall"><a href="https://twitter.com/bold_themes" -->
+                                                                        <!-- target="_blank" data-ico-fa="&#xf099;" -->
+                                                                        <!-- class="btIcoHolder"></a></div> -->
+                        <!-- </div>  -->
+                    <!-- </div>  -->
+                    <nav>
+                        {{=portlet.display(64)}}
+                         
+                    </nav>
+                </div><!-- .menuPort -->
+
+            </div><!-- /menuHolder -->
+        </div>
+        <div class="btCurveHeader">
+            <div class="btCurveHolder">
+                <div class="btCurveLeftHolder">
+                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                         xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="80px" height="20px"
+                         viewBox="0 0 80 20" enable-background="new 0 0 80 20" xml:space="preserve">
+						<path fill-rule="evenodd" clip-rule="evenodd"
+                              d="M 81 20 c 0 0 -16 0 -30 0 c -30 0 -23 -15 -50 -15 l 0 -5 L 81 0 L 81 20 Z"
+                              class="btCurveLeft"/>
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                              d="M 81 -1 L 31 -1 c 27 -1 21 15 51 16 C 82 3 82 -1 82 -1 Z" class="btCurveLeftFill"/>
+					</svg>
+                </div>
+                <div class="btCurveRightHolder">
+                    <svg version="1.1" id="Layer_2" xmlns="http://www.w3.org/2000/svg"
+                         xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="80px" height="20px"
+                         viewBox="0 0 80 20" enable-background="new 0 0 80 20" xml:space="preserve">
+						<path fill-rule="evenodd" clip-rule="evenodd"
+                              d="M 0 20 c 0 0 16 0 30 0 c 30 0 23 -15 50 -15 l 0 -5 L 0 0 L 0 20 Z"
+                              class="btCurveRight"/>
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                              d="M -1 -1 L 50 -1 C 23 -1 30 15 -1 15 C -1 3 -1 -1 -1 -1 Z" class="btCurveRightFill"/>
+					</svg>
+                </div>
+                <div class="btSiteHeaderCurveSleeve"></div>
+            </div>
+        </div><!-- /port -->
+
+    </header><!-- /.mainHeader -->
+    <div class="btContentWrap btClear">
+        <div class="btContentHolder">
+            <div class="btContent">
+                <div class="bt_rc_container">
+                    <section id="slider" class="boldSection btDarkSkin inherit">
+                        <div class="port">
+                            <div class="boldCell">
+                                <div class="boldCellInner">
+                                    <div class="boldRow ">
+                                        <div class="rowItem col-m
+                                        12 col-ms-12  btTextCenter inherit">
+                                            <div class="rowItemContent">
+                                                <div class="slided autoSliderHeight"
+                                                     data-slick='{"autoplay":true,"autoplaySpeed":5000,"pauseOnHover":false,"pauseOnDotsHover":true}'>
+                                                    {{url1 = URL("static","%s/images/Druga-Pozadina.jpg")%(static_default) }}
+                                                    <div class="slidedItem firstItem"
+                                                         data-thumb="{{=url1}}">
+                                                       
+                                                        <div class="btSliderPort wBackground cover"
+                                                             style="background-image: url('{{=url1}}')">
+                                                            <div class="btSliderCell" data-slick="yes">
+                                                                <div class="btSlideGutter">
+                                                                    <div class="btSlidePane">
+                                                                        <div class="btClear btSeparator topSemiSpaced noBorder">
+                                                                            <hr>
+                                                                        </div>
+                                                                        <header class="header btClear huge btDash topDash  btAccentDash btRegularTitle">
+                                                                            <p class="btSuperTitle">Ứng dụng giao hàng siêu tốc </p>
+                                                                            <div class="dash"><h1><span
+                                                                                    class="headline">Giao hàng siêu tốc</span>
+                                                                            </h1></div>
+                                                                        </header>
+                                                                        <div class="btClear btSeparator topExtraSmallSpaced noBorder">
+                                                                            <hr>
+                                                                        </div>
+                                                                        <div class="bpgPhoto btTextCenter">
+                                                                            <div class="btImage"><img
+                                                                                    src='{{=URL("static","%s/images")%(static_default)}}/truck-vignette-white.png'
+                                                                                    alt="truck-vignette-white.png">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="btClear btSeparator noBorder">
+                                                                            <hr>
+                                                                        </div>
+                                                                        <div class="btIconImageRow">
+                                                                            <div class="btIco colorless borderless large">
+                                                                                <span data-ico-cs="&#xe600;"
+                                                                                      class="btIcoHolder"></span></div>
+                                                                            <div class="btIco colorless borderless large">
+                                                                                <span data-ico-cs="&#xe651;"
+                                                                                      class="btIcoHolder"></span></div>
+                                                                            <div class="btIco colorless borderless large">
+                                                                                <span data-ico-cs="&#xe65d;"
+                                                                                      class="btIcoHolder"></span></div>
+                                                                        </div>
+                                                                        <div class="btClear btSeparator topSemiSpaced noBorder">
+                                                                            <hr>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    {{url2 = URL("static","%s/images/Delivery-Express.jpg")%(static_default) }}
+                                                    <div class="slidedItem firstItem"
+                                                         data-thumb="{{=url2}}">
+                                                        <div class="btSliderPort wBackground cover"
+                                                             style="background-image: url('{{=url2}}')">
+                                                            <div class="btSliderCell" data-slick="yes">
+                                                                <div class="btSlideGutter">
+                                                                    <div class="btSlidePane">
+                                                                        <div class="btClear btSeparator topSemiSpaced noBorder">
+                                                                            <hr>
+                                                                        </div>
+                                                                        <header class="header btClear huge btDash topDash  btAccentDash btRegularTitle">
+                                                                            <p class="btSuperTitle">Dù hàng nhỏ hay hàng to cồng kềnh</p>
+                                                                            <div class="dash"><h1><span
+                                                                                    class="headline"> Giao hàng mọi nơi</span>
+                                                                            </h1></div>
+                                                                        </header>
+                                                                        <div class="btClear btSeparator topExtraSmallSpaced noBorder">
+                                                                            <hr>
+                                                                        </div>
+                                                                        <div class="bpgPhoto btTextCenter">
+                                                                            <div class="btImage"><img
+                                                                                    src='{{=URL("static","%s/images")%(static_default)}}/truck-vignette-white.png'
+                                                                                    alt="truck-vignette-white.png">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="btClear btSeparator noBorder">
+                                                                            <hr>
+                                                                        </div>
+                                                                        <div class="btIconImageRow">
+                                                                            <div class="btIco colorless borderless large">
+                                                                                <span data-ico-cs="&#xe600;"
+                                                                                      class="btIcoHolder"></span></div>
+                                                                            <div class="btIco colorless borderless large">
+                                                                                <span data-ico-cs="&#xe651;"
+                                                                                      class="btIcoHolder"></span></div>
+                                                                            <div class="btIco colorless borderless large">
+                                                                                <span data-ico-cs="&#xe65d;"
+                                                                                      class="btIcoHolder"></span></div>
+                                                                        </div>
+                                                                        <div class="btClear btSeparator topSemiSpaced noBorder">
+                                                                            <hr>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section data-parallax='0.1' data-parallax-offset="0"
+                             class="boldSection btDivider topSpaced bottomSpaced gutter inherit btParallax wBackground cover"
+                             style="background-image:url({{=URL('static','%s/images/shutterstock_234753442.jpg')%(static_default) }});">
+                        <div class="port">
+                            <div class="boldCell">
+                                <div class="boldCellInner">
+                                    <div class="boldRow ">
+                                        <div class="rowItem col-md-12 col-ms-12  btTextCenter animate animate-fadein inherit">
+                                            <div class="rowItemContent">
+                                                <header class="header btClear large  btAccentDash btAccentTitle"><p
+                                                        class="btSuperTitle">Đơn giản, nhanh chóng, chuyên nghiệp luôn sẵn sàng khi bạn cần</p>
+                                                    <div class="dash"><h2><span class="headline">Đối tác giao hàng đáng tin cậy của bạn</span>
+                                                    </h2></div>
+                                                </header>
+                                            </div>
+                                        </div>
+                                    </div>
+                                     {{=portlet.display(107)}}
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    
+                    <section  data-parallax="0.1" data-parallax-offset="0"
+                             class="boldSection topSpaced bottomSpaced btDarkSkin gutter inherit btParallax wBackground cover"
+                             style="background-color:#ffffff;background-image:url({{=URL('static','%s/images/parallax-img-new-1.jpg')%(static_default) }});">
+                        <div class="port">
+                            <div class="boldCell">
+                                <div class="boldCellInner">
+                                    <div class="boldRow ">
+                                        <div class="rowItem col-md-12 col-ms-12  btTextCenter animate animate-fadein inherit">
+                                            <div class="rowItemContent">
+                                                <header class="header btClear large customHeaderContent btAccentDash btRegularTitle">
+                                                    <p class="btSuperTitle">Khách hàng chia sẻ về </p>
+                                                    <div class="dash"><h2><span class="headline"> Dịch vụ của ghép hàng </span>
+                                                    </h2></div>
+                                                </header>
+                                                <div class="btClear btSeparator topSemiSpaced noBorder">
+                                                    <hr>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="boldRow ">
+                                        {{=portlet.display(66)}}
+                                    </div>
+                                    <div class="boldRow ">
+                                        <div class="rowItem col-md-12 col-ms-12  btTextCenter animate animate-fadein animate-moveright inherit">
+                                            <div class="rowItemContent">
+                                                <div class="btClear btSeparator topSpaced noBorder">
+                                                    <hr>
+                                                </div>
+                                                <div class="bpgPhoto btTextCenter">
+                                                    <div class="btImage"><img
+                                                            src='{{=URL("static","%s/images")%(static_default)}}/truck-vignette-white.png'
+                                                            alt="truck-vignette-white.png"></div>
+                                                </div>
+                                                <div class="btClear btSeparator bottomSemiSpaced noBorder">
+                                                    <hr>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="boldRow ">
+                                        <div class="rowItem col-md-12 col-ms-12  btTextCenter animate animate-fadein inherit">
+                                            <div class="rowItemContent">
+                                                <div class="boldClientList">
+                                                    <div class="bclPort">
+                                                        {{=portlet.display_no_wr(95)}}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <section data-parallax="0.1" data-parallax-offset="0"
+                             class="boldSection topSpaced bottomSpaced gutter inherit btParallax wBackground cover"
+                             >
+                        <div class="port">
+                            <div class="boldCell">
+                                <div class="boldCellInner">
+                                    <div class="boldRow ">
+                                        <div class="rowItem col-md-12 col-ms-12  btTextCenter animate animate-fadein inherit">
+                                            <div class="rowItemContent">
+                                                <header class="header btClear large customHeaderContent btLightAccentDash btRegularTitle">
+                                                    <p class="btSuperTitle">Phương tiện vận chuyển phù hợp với mức giá tốt nhất</p>
+                                                    <div class="dash"><h2>
+                                                    <span class="headline">Dịch vụ tiêu biểu</span></h2></div>
+                                                </header>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="boldRow ">
+                                        {{=portlet.display_no_wr(167)}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="bt_section63b63222c775a" class="boldSection btDivider topSpaced bottomSpaced gutter inherit" style="background-image: url({{=URL("static","%s/images")%(static_default)}}/container-depot-service.jpg); background-size: cover;">
+                    <!-- container-depot-service.jpg -->
+                        <div class="port">
+                            <div class="boldCell">
+                                <div class="boldCellInner">
+                                    <div class="boldRow" >
+                                        <div class="rowItem btDarkSkin col-md-6 col-ms-12  btTextLeft inherit" style="
+                                            padding: 20px; background-color: #313131a3;
+                                        ">
+                                            <div class="rowItemContent">
+                                                <header class="header btClear large  btAccentDash btRegularTitle">
+                                                    <p class="btSuperTitle">Bạn muốn tìm hiểu thêm về chúng tôi</p>
+                                                    <div class="dash">
+                                                        <h2><span class="headline">Hãy để lại thông tin</span>
+                                                        </h2>
+                                                    </div>
+                                                </header>
+                                                <div class="btClear btSeparator topSemiSpaced noBorder">
+                                                    <hr>
+                                                </div>
+                                                <div class="btQuoteBooking  btQuoteBookingWithoutColor c63b63222c798c">
+                                                    <div class="btQuoteBookingWrap">
+                                                        <div class="btQuoteBookingForm btActive">
+                                                            <div class="btQuoteGBlock ">
+                                                                <div class="btQuoteItem " id="btQuoteItem63b63222c7a84">
+                                                                    <label>Họ và tên</label>
+                                                                    <div class="btQuoteItemInput">
+                                                                        <input type="text" />
+                                                                    </div>
+                                                                </div>
+                                                                <div class="btQuoteItem " id="btQuoteItem63b63222c7a98">
+                                                                    <label>Số điện thoại</label>
+                                                                    <div class="btQuoteItemInput"><input type="text"
+                                                                            class="btQuoteText btQuoteElement" data-condition=""
+                                                                            data-price="1" value="" data-initial-value="" />
+                                                                    </div>
+                                                                </div>
+                                                                <div class="btQuoteItem " id="btQuoteItem63b63222c7ab6">
+                                                                    <label>Công ty - Doanh nghiệp</label>
+                                                                    <div class="btQuoteItemInput"><input type="text"
+                                                                            class="btQuoteText btQuoteElement" data-condition=""
+                                                                            data-price="1" value="" data-initial-value="" />
+                                                                    </div>
+                                                                </div>
+                                                                <div class="btQuoteItem " id="btQuoteItem63b63222c7aca">
+                                                                    <label>Ghi chú</label>
+                                                                    <div class="btQuoteItemInput"><input type="text"
+                                                                            class="btQuoteText btQuoteElement" data-condition=""
+                                                                            data-price="1" value="" data-initial-value="" />
+                                                                    </div>
+                                                                </div>
+                                                                <div class="rowItemContent">
+                                                                    <div class="btBtn btBtn btnOutline btnIconLeftPosition btnLightColor btnBig btnNormal btnIco"
+                                                                        style='margin-top: 20px;'>
+                                                                        <div class="btIco borderless extrasmall">
+                                                                            <a href="#" data-ico-fa="&#xf1ec;" class="btIcoHolder"><span>Yêu cầu gửi báo giá</span></a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                    
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                    
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="bt_section63b63222ca467" data-parallax="0" data-parallax-offset="0"
+                             class="boldSection topSpaced bottomSpaced gutter inherit btParallax" style="background-image: url({{=URL("static","%s/images")%(static_default)}}/app_bg.png);">
+                        <div class="port">
+                            <div class="boldCell">
+                                <div class="boldCellInner">
+                                    <div class="boldRow ">
+                                        <div class="rowItem col-md-12 col-ms-12  btTextCenter animate animate-fadein inherit">
+                                            <div class="rowItemContent">
+                                                <header class="header btClear large  btAccentDash btRegularTitle"><p
+                                                        class="btSuperTitle">Giới thiệu</p>
+                                                    <div class="dash"><h2><span class="headline">Năng lực của chúng tôi </span>
+                                                    </h2></div>
+                                                </header>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="boldRow ">
+                                        <div class="rowItem col-sm-6 col-ms-12 btTextLeft animate animate-fadein inherit">
+                                            <div class="rowItemContent">
+                                                <div class="btClear btSeparator topSemiSpaced noBorder">
+                                                    <hr>
+                                                </div>
+                                                <div class="btText">
+                                                    <blockquote><p>Nhận thấy quy trình phức tạp và thủ công trong việc sử dụng tổng đài trung tâm để đặt giao hàng, cùng với sự thiếu minh bạch về giá cả và chất lượng, một nhóm các chuyên gia đã cùng nhau tìm giải pháp cho vấn đề này.
+
+<br/> Ghép Hàng  được sáng lập nhằm giúp mọi người có thể giao hàng theo yêu cầu chỉ qua một cú chạm. Thông qua một ứng dụng duy nhất, người dùng có thể tiếp cận với một loạt các phương tiện giao hàng phù hợp do các tài xế chuyên nghiệp đảm nhận..</p></blockquote>
+                                                </div>
+                                                <div class="btIconImageRow btn-icon-images" style="opacity: 0.7;">
+                                                    <div class="btIco colorless borderless large"><span
+                                                            data-ico-cs="&#xe600;" class="btIcoHolder"></span></div>
+                                                    <div class="btIco colorless borderless large"><span
+                                                            data-ico-cs="&#xe651;" class="btIcoHolder"></span></div>
+                                                    <div class="btIco colorless borderless large"><span
+                                                            data-ico-cs="&#xe65d;" class="btIcoHolder"></span></div>
+                                                    <div class="btIco colorless borderless large"><span
+                                                            data-ico-cs="&#xe657;" class="btIcoHolder"></span></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="rowItem col-sm-6 col-ms-12 btTextLeft animate animate-fadein inherit">
+                                            <div class="rowItemContent">
+                                                <div class="btClear btSeparator topSemiSpaced noBorder">
+                                                    <hr>
+                                                </div>
+                                                <header class="header btClear small  btAccentDash btRegularTitle"
+                                                        style="margin-bottom: 0;"><p class="btSuperTitle">Tốc độ lên đơn</p>
+                                                </header>
+                                                <div class="btProgressBar animate">
+                                                    <div class="btProgressContent">
+                                                        <div data-percentage="75" class="btProgressAnim animate"><span>75%</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="btClear btSeparator bottomExtraSmallSpaced noBorder">
+                                                    <hr>
+                                                </div>
+                                                <header class="header btClear small  btAccentDash btRegularTitle"
+                                                        style="margin-bottom: 0;"><p class="btSuperTitle"> Giá  cước minh bạch </p>
+                                                </header>
+                                                <div class="btProgressBar animate">
+                                                    <div class="btProgressContent">
+                                                        <div data-percentage="61" class="btProgressAnim animate"><span>61%</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="btClear btSeparator bottomExtraSmallSpaced noBorder">
+                                                    <hr>
+                                                </div>
+                                                <header class="header btClear small  btAccentDash btRegularTitle"
+                                                        style="margin-bottom: 0;"><p class="btSuperTitle">Tối ưu hệ thống</p>
+                                                </header>
+                                                <div class="btProgressBar animate">
+                                                    <div class="btProgressContent">
+                                                        <div data-percentage="54" class="btProgressAnim animate"><span>54%</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="btClear btSeparator bottomExtraSmallSpaced noBorder">
+                                                    <hr>
+                                                </div>
+                                                <header class="header btClear small  btAccentDash btRegularTitle"
+                                                        style="margin-bottom: 0;"><p class="btSuperTitle">Tốc độ giao hàng</p>
+                                                </header>
+                                                <div class="btProgressBar animate">
+                                                    <div class="btProgressContent">
+                                                        <div data-percentage="95" class="btProgressAnim animate"><span>95%</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="boldRow ">
+                                        <div class="rowItem col-md-12 col-ms-12  btTextCenter animate animate-fadein animate-moveright inherit">
+                                            <div class="rowItemContent">
+                                                <div class="btClear btSeparator topSemiSpaced noBorder">
+                                                    <hr>
+                                                </div>
+                                                <div class="bpgPhoto btTextCenter">
+                                                    <div class="btImage">
+                                                        <img src='{{=URL("static","%s/images")%(static_default)}}/truck-vignette-white.png' alt="truck-vignette-white.png">
+                                                    </div>
+                                                </div>
+                                                <div class="btClear btSeparator bottomSemiSpaced noBorder">
+                                                    <hr>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="boldRow ">
+                                        
+                                        {{=portlet.display(168)}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="boldSection topSemiSpaced bottomSemiSpaced btDarkSkin gutter inherit wBackground cover"
+                             style='background-image:url({{=URL("static","%s/images")%(static_default)}}/cityInternet.jpg);'>
+                        <div class="port">
+                            <div class="boldCell">
+                                <div class="boldCellInner">
+                                    <div class="boldRow ">
+                                        <div class="rowItem col-sm-6 col-ms-12 btTextLeft">
+                                            <div class="rowItemContent">
+                                                <div class="btClear btSeparator topSmallSpaced noBorder">
+                                                    <hr>
+                                                </div>
+                                                <header class="header btClear medium  btAccentDash btRegularTitle"
+                                                        style="color:#ffffff;"><p class="btSuperTitle">Bạn muốn tìm hiểu thêm về chúng tôi?</p>
+                                                    <div class="dash"><h2><span class="headline">Xem ngay catalogue</span>
+                                                    </h2></div>
+                                                </header>
+                                            </div>
+                                        </div>
+                                        <div class="rowItem col-sm-6 col-ms-12 btTextRight btMiddleVertical">
+                                            <div class="rowItemContent">
+                                                <div class="btBtn btBtn btnOutline btnLightColor btnSmall btnNormal btnIco">
+                                                    <div class="btIco borderless extrasmall"><a
+                                                            href="#" target="_blank"
+                                                            data-ico-cs="&#xe62a;" class="btIcoHolder"><span>Lưu về máy</span></a>
+                                                    </div>
+                                                </div>
+                                                <div class="btBtn btBtn btnOutline btnLightColor btnSmall btnNormal btnIco">
+                                                    <div class="btIco borderless extrasmall"><a
+                                                            href="#" target="_blank"
+                                                            data-ico-cs="&#xe62a;" class="btIcoHolder"><span>Xem online</span></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section id="bt_section63b63222cbbd7"
+                             class="boldSection topSpaced bottomSpaced gutter inherit wBackground cover"
+                             style="background-image:url({{=URL("static","%s/images")%(static_default)}}/shutterstock_234753442.jpg);">
+                        <div class="port">
+                            <div class="boldCell">
+                                <div class="boldCellInner">
+                                    <div class="boldRow ">
+                                        <div class="rowItem col-md-12 col-ms-12  btTextCenter animate animate-fadein inherit btDarkAccentDash">
+                                            <div class="rowItemContent">
+                                                <header class="header btClear large  btAccentDash btRegularTitle">
+                                                    <p class="btSuperTitle">Tin tức mới</p>
+                                                    <div class="dash"><h2><span
+                                                            class="headline">Tin tức sự kiện</span></h2></div>
+                                                </header>
+                                                <div class="btClear btSeparator topSemiSpaced noBorder">
+                                                    <hr>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="boldRow ">
+                                        <div class="rowItem col-md-12 col-ms-12  btTextLeft animate animate-fadein inherit btDarkAccentDash">
+                                            <div class="rowItemContent">
+                                                <div class="btLatestPostsContainer horizontalPosts ">
+                                                  {{=portlet.display(89)}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                     
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div><!-- /bt_content -->
+
+        </div><!-- /contentHolder -->
+    </div><!-- /contentWrap -->
+
+
+   
+    <section class="boldSection btSiteFooterWidgets gutter topSemiSpaced topSemiSpaced" style='background-image:url({{=URL("static","%s/images")%(static_default)}}/parallax-img-new-1.jpg);'>
+        <div class="port">
+            <div class="boldRow" id="boldSiteFooterWidgetsRow">
+                <div class="btBox widget_bt_recent_posts">
+                    <h4><span>GHÉP HÀNG</span></h4>
+                    {{=portlet.display(115)}}
+                </div>
+                
+                <div class="btBox widget_media_gallery">
+                    <h4><span>Chính sách</span></h4>
+                    {{=portlet.display(118)}}
+                </div>
+                <div class="btBox widget_nav_menu"><h4><span>Fanpage</span></h4>
+                    
+                    {{=portlet.display(125)}}
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="boldSection gutter btSiteFooter btGutter ">
+        <div class="port">
+            <div class="boldRow">
+                <div class="rowItem btFooterCopy col-md-6 col-sm-12 btTextLeft">
+                    <p class="copyLine">Copyright by ghephang.com. All rights reserved</p>
+                </div><!-- /copy -->
+                <div class="rowItem btFooterMenu col-md-6 col-sm-12 btTextRight">
+                     
+                </div>
+            </div><!-- /boldRow -->
+        </div><!-- /port -->
+    </footer>
+</div><!-- /pageWrap -->
+<style id='bt-custom-style-inline-css' type='text/css'>
+    .header .btSuperTitle {
+        font-style: italic;
+        font-weight: 500;
+    }
+
+    .btLightSkin .btSiteFooterWidgets, .btDarkSkin .btLightSkin .btSiteFooterWidgets, .btSiteFooterCurve .btSiteFooterCurveSleeve {
+        background: #141415;
+    }
+
+    .btLightSkin .btSiteFooter, .btDarkSkin .btLightSkin .btSiteFooter {
+        background: #141415;
+    }
+
+    .btSiteFooterCurve .btCurveLeft, .btSiteFooterCurve .btCurveRight {
+        fill: #141415;
+    }
+
+    .header.huge .dash:after, .header.huge .dash:before {
+        border-color: #fff;
+        border-width: 3px;
+    }
+    .btSiteFooterWidgets .ivinh_display p {
+        margin-bottom: 5px;
+        font-weight: 400;
+    }
+
+    .popularPosts h5 {
+        font-weight: 400;
+    }
+    .header.large .btSuperTitle{
+        font-size: 16px;
+        line-height: 30px;
+    }
+    .bclItemChild {
+        background: #ebf3f363;
+        border-radius: 4px;
+    }
+
+    #bt_section63b63222c775a:before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        background: #101010ab;
+    }
+    #bt_section63b63222c775a {
+        position: relative;
+    }
+
+    @media (max-width:550px) {
+        .btIco.large .btIcoHolder:before {
+            width: 80px;
+            height: 80px;
+            line-height:80px
+        }
+
+        .header.huge .btSuperTitle, .header.huge .btSubTitle {
+            font-size: 18px;
+            line-height: 36px;
+        }
+        h1, .header.huge h1 {
+            font-size: 28px;
+            line-height: 40px;
+        }
+        .menuHolder .logo img {
+            padding: 10px;
+            margin-left: 30px;
+        }
+
+        h2, .header.large h2 {
+            font-size: 26px;
+            line-height: 36px;
+        }
+        .header.small h4 {
+            font-size: 22px;
+            line-height: 32px;
+        }
+
+        .header.small h4 {
+            font-size: 16px;
+            line-height: 24px;
+        }
+        .topSmallSpaced{
+            padding-top: 0;
+        }
+
+        .btn-icon-images{
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .btn-icon-images .btIco.large .btIcoHolder:before {
+            width: 60px;
+            height: 60px;
+            line-height:60px
+        }
+        .btBtn a {
+            padding: 3px 5px;
+        }
+    }
+</style>
+ 
+<script type='text/javascript' src='{{=URL("static","%s/js")%(static_default)}}/bt_parallax6a4d.js? ' ></script>
+<script type='text/javascript' src='{{=URL("static","%s/js")%(static_default)}}/jquery/ui/core.min3f14.js'></script>
+<script type='text/javascript' src='{{=URL("static","%s/js")%(static_default)}}/jquery/ui/datepicker.min3f14.js' ></script>
+<script type='text/javascript' src='{{=URL("static","%s/js")%(static_default)}}/jquery/ui/mouse.min3f14.js' ></script>
+<script type='text/javascript' src='{{=URL("static","%s/js")%(static_default)}}/jquery/ui/slider.min3f14.js' ></script>
+<script type='text/javascript' src='{{=URL("static","%s/js")%(static_default)}}/jquery.ui.touch-punch.min6a4d.js'></script>
+</body>
+
+</html>

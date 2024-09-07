@@ -1,0 +1,227 @@
+{{extend 'site/ghephang/default/layouts.html'}}
+
+<div class="btContentHolder" style="padding-top: 90px;">
+    <div class="btContent">
+        <div class="bt_rc_container">
+            {{from plugin_cms import CmsFolder}}
+            {{avatar,avatar_bg = CmsFolder().folder_avatar(request.args(0))}}
+             {{if avatar_bg !="":}}
+                <section data-parallax="0.1" data-parallax-offset="0"
+                     class="boldSection topSpaced bottomSpaced btDarkSkin gutter btMiddleVertical btParallax wBackground cover anh_rieng"
+                     style="background-image: url({{=URL('static','/site/ghephang/uploads/avatar_bg/%s')%(avatar_bg)}}); background-position: 50% 9.009px;">
+            {{else:}}
+                <section data-parallax="0.1" data-parallax-offset="0"
+                     class="boldSection topSpaced bottomSpaced btDarkSkin gutter btMiddleVertical btParallax wBackground cover"
+                     style='background-image: url({{=URL("static","%s/images")%(static_default)}}/transport-dimmed.jpg); background-position: 50% 9.009px;'>
+            {{pass}}
+            
+                <div class="port">
+                    <div class="boldCell">
+                        <div class="boldCellInner">
+                            <div class="boldRow ">
+                                <div class="rowItem col-md-12 col-ms-12  btTextLeft animate animate-fadein animate-moveleft inherit">
+                                    <div class="rowItemContent">
+                                        <div class="btClear btSeparator topSmallSpaced noBorder">
+                                            <hr>
+                                        </div>
+                                        <header class="header btClear extralarge btDash topDash  btAccentDash btRegularTitle"
+                                                style="max-width:800px;"><p class="btSuperTitle">
+                                                     {{=CmsFolder().folder_des(request.args(0))}}
+                                             </p>
+                                            <div class="dash"><h1><span class="headline"> {{=CmsFolder().folder_name(request.args(0))}}</span></h1></div>
+                                        </header>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            
+            <section   class="boldSection btDivider topSpaced bottomSemiSpaced gutter inherit">
+                <div class="port">
+                    <div class="boldCell">
+                        <div class="boldCellInner">
+                            <div class="boldRow ">
+                                <div class="header large ">      
+                                    <p class="btSuperTitle">ỨNG DỤNG GHÉP HÀNG</p>
+                                    <div class="dash"><h2><span class="headline"> GIAO HÀNG SIÊU NHANH - GIÁ SIÊU TỐT </span></h2></div>
+                                </div>
+                                
+                                <div class="rowItem col-sm-6 col-ms-12 btTextCenter animate-fadein animate-moveleft inherit animated">
+                                    <div class="rowItemContent">
+                                        <div class="bpgPhoto btTextCenter out-bottom">
+                                            <div class="btImage">
+                                                <br/>
+                                                <img   src="{{=URL('static','/site/ghephang/template/default/images/800/5.jpg')}}" alt="ghép hàng"></div>
+                                        </div>
+                                       
+                                    </div>
+                                </div>
+                                
+                                <div class="rowItem col-md-6 col-ms-12 btTextLeft animate-fadein animate-moveright inherit animated">
+                                   
+                                    <div class="rowItemContent" style='text-align:justify;'>
+                                    <br/>
+ <b>Ghephang.com  </b> là thương hiệu giao hàng theo nhu cầu chuyên nghiệp với nền tảng công nghệ hiện đại chỉ qua một cú <i>“chạm”</i>.Đáp ứng mọi nhu cầu vận chuyển của người tiêu dùng và chủ doanh nghiệp. 
+ <br/> Cho phép người dùng đặt hàng và tiếp cận hàng loạt các phương tiện giao hàng phù hợp với tài xế chuyên nghiệp. Giúp bạn theo dõi tình trạng đơn hàng của mình một cách dễ dàng. 
+ <br/> Bạn có thể xem lịch sử giao hàng và đánh giá dịch vụ, thanh toán trực tuyến của chúng tôi qua một ứng dụng duy nhất.
+ <br/>  <b> Ghephang.com   </b>với mong muốn đơn giản hóa việc giao hàng, giúp các chủ cửa hàng, các nhà hàng đến các công ty tại Việt Nam có thể tận hưởng một dịch vụ cao cấp tiện lợi nhưng với giả cả hợp lý.
+                                       
+                                    </div>
+                                </div>
+                               
+                            </div>
+                            <div class="boldRow ">
+                                <div class="rowItem col-md-12 col-ms-12 btTextCenter animate-fadein animate-moveright inherit animated">
+                                    <div class="rowItemContent">
+                                        <div class="btClear btSeparator bottomSmallSpaced noBorder">
+                                            <hr>
+                                        </div>
+                                        <div class="bpgPhoto btTextCenter">
+                                            <div class="btImage"><img
+                                                    src="https://cargo.bold-themes.com/delivery-express/wp-content/uploads/sites/3/2015/09/truck-vignette-gray.png"
+                                                    alt="truck-vignette-gray.png"></div>
+                                        </div>
+                                        <div class="btClear btSeparator bottomSemiSpaced noBorder">
+                                            <hr>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                         
+                        </div>
+                    </div>
+                </div>
+            </section>
+             
+             <section id="elements" data-parallax="0" data-parallax-offset="0"
+         class="boldSection topSpaced bottomSpaced btDarkSkin gutter inherit btParallax wBackground cover"
+         style="background-image: url(http://web.ghephang.com/cms/static/site/ghephang/template/default/images/uAmE3c-rotated-1.jpg); background-position: 50% 0.0414141px;">
+            <div class="port">
+                <div class="boldCell">
+                    <div class="boldCellInner">
+                        <div class="boldRow ">
+                            <div class="rowItem col-sm-6 col-ms-12 btTextLeft animate-fadein inherit animated">
+                                <div class="rowItemContent">
+                                    <header class="header btClear large  btAccentDash btRegularTitle">
+                                        <p class="btSuperTitle"> Tham gia ngay cùng  </p>
+                                        <div class="dash"><h2><span class="headline">Ghephang.com 
+</span></h2></div>
+                                    </header>
+                                    <div class="btClear btSeparator topSmallSpaced noBorder">
+                                        <hr>
+                                    </div>
+                                    <div class="btText">
+                                        <blockquote><p>Ứng dụng công nghệ của chúng tôi thay đổi cách mọi người đặt xe siêu nhanh giá siêu tốt, giúp nền kinh tế Việt Nam phát triển và quan trọng nhất là cải thiện cuộc sống của 40.000 tài xế trong hệ thống. </p>
+                                        </blockquote>
+                                        <p>Ghephang.com muốn cho bạn cơ hội trở thành một phần của team năng động và dùng khả năng của bạn để góp phần xây dựng một phần tương lai của Việt Nam.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="rowItem col-sm-6 col-ms-12 btTextLeft inherit btNoPadding">
+                                <div class="rowItemContent">
+                                    <div class="btText">
+                                        <p>
+                                            <iframe width="1200" height="675"
+                                                    src="https://www.youtube.com/embed/s73V060rEHI?feature=oembed"
+                                                    frameborder="0" allowfullscreen=""
+                                                    style="width: 100%; height: 331.875px;"></iframe>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+            
+            <!-- Những tiện ích dành  cho khách hàng kinh doanh -->
+        <section  class="boldSection topSpaced bottomSemiSpaced gutter inherit">
+            <div class="port">
+                <div class="boldCell">
+                    <div class="boldCellInner">
+                        <div class="boldRow ">
+                            <div class="header large btTextCenter  ">      
+                                    <div class="dash"><h2><span class="headline">TÍNH NĂNG NỔI BẬT </span></h2><br/></div>
+                            </div>
+                        
+                            <div class="rowItem col-sm-6 col-ms-12 btTextLeft animate-fadein animate-moveright inherit animated">
+                                <div class="rowItemContent">
+                                    <div class="servicesItem  largeIcon borderlessIconType ">
+                                        <div class="sIcon">
+                                            <div class="btIco large borderless"><span data-ico-cs=""
+                                                                                      class="btIcoHolder"></span></div>
+                                        </div>
+                                        <div class="sTxt">
+                                            <header class="header btClear extrasmall">
+                                                <div class="dash"><h4><span class="headline">Giao nhiều điểm với 1 lần đặt</span></h4></div>
+                                            </header>
+                                            <p>Chọn tối đa 20 điểm trả hàng trong một lần đặt giao, giúp bạn tiết kiệm thời gian và chi phí giao hàng.<br></p></div>
+                                    </div>
+                                    <div class="btClear btSeparator bottomSemiSpaced noBorder">
+                                        <hr>
+                                    </div>
+                                    <div class="servicesItem  largeIcon borderlessIconType ">
+                                        <div class="sIcon">
+                                            <div class="btIco large borderless"><span data-ico-cs=""
+                                                                                      class="btIcoHolder"></span></div>
+                                        </div>
+                                        <div class="sTxt">
+                                            <header class="header btClear extrasmall">
+                                                <div class="dash"><h4><span class="headline">Tài khoản doanh nghiệp</span></h4></div>
+                                            </header>
+                                            <p>Tài khoản doanh nghiệp với nhiều người dùng thành viên sẽ giúp để quản lý đơn hàng, theo dõi thông tin dễ dàng và đầy đủ.<br></p></div>
+                                    </div>
+                                    <div class="btClear btSeparator bottomSemiSpaced noBorder">
+                                        <hr>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="rowItem col-sm-6 col-ms-12 btTextLeft animate-fadein animate-moveright inherit animated">
+                                <div class="rowItemContent">
+                                    <div class="servicesItem  largeIcon borderlessIconType ">
+                                        <div class="sIcon">
+                                            <div class="btIco large borderless"><span data-ico-cs=""
+                                                                                      class="btIcoHolder"></span></div>
+                                        </div>
+                                        <div class="sTxt">
+                                            <header class="header btClear extrasmall">
+                                                <div class="dash"><h4><span class="headline">Quản lý tài khoản</span></h4></div>
+                                            </header>
+                                            <p>Chúng tôi có nhân sự riêng để tận tâm hỗ trợ và xử lý mọi phát sinh của tài khoản doanh nghiệp.<br></p></div>
+                                    </div>
+                                    <div class="btClear btSeparator bottomSemiSpaced noBorder">
+                                        <hr>
+                                    </div>
+                                    <div class="servicesItem  largeIcon borderlessIconType ">
+                                        <div class="sIcon">
+                                            <div class="btIco large borderless"><span data-ico-cs=""
+                                                                                      class="btIcoHolder"></span></div>
+                                        </div>
+                                        <div class="sTxt">
+                                            <header class="header btClear extrasmall">
+                                                <div class="dash"><h4><span class="headline">Theo dõi theo thời gian thực</span></h4>
+                                                </div>
+                                            </header>
+                                            <p> Dịch vụ giao hàng kém dẫn đến việc gửi hàng lộn xộn, khách hàng bất mãn, bưu kiện thất lạc ...<br></p></div>
+                                    </div>
+                                    <div class="btClear btSeparator bottomSemiSpaced noBorder">
+                                        <hr>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        
+        </div>
+    </div><!-- /bt_content -->
+
+</div>
+   

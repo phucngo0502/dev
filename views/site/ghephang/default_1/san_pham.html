@@ -1,0 +1,14 @@
+{{extend 'site/ghephang/default/layout.html'}}
+<link href="{{=URL('static','css/smoothproducts.css')}}" rel='stylesheet' type='text/css' />
+<script src="{{=URL('static','js/smoothproducts.js')}}"  type='text/javascript'></script> 
+
+<script type="text/javascript">
+/* wait for images to load */
+$(window).load(function() {
+	$('.sp-wrap').smoothproducts();
+});
+</script>
+
+
+	{{=portlet.display(74)}}
+<script src="{{=URL('static','js/jquery.mmenu.min.all.js')}} "></script>

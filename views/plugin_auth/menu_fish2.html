@@ -1,0 +1,23 @@
+<script src="{{=URL(r=request,c='static',f='plugin_app//menu_fish/superfish.js')}}" type="text/javascript"></script> 
+<link type="text/css" href="{{=URL(r=request,c='static',f='plugin_app/menu_fish/superfish.css')}}" rel="stylesheet" />
+
+<div id="statusbar"><!-- statusbar is menu zone -->
+	<script type="text/javascript">
+		jQuery(document).ready(function(){
+		jQuery('ul.sf-menu').superfish();});
+	</script><!-- Clear the divs -->
+	{{block header}} <!-- this is default header -->
+	<div class="nav_right">
+    
+		<a class="plugin_auth" href="{{=URL(c='plugin_auth',f='index')}}">
+		</a>
+		<a class="dashboard_top" href="{{=URL(c='plugin_app',f='index')}}">
+		</a>
+	{{try:}}{{=SPAN(B(user.last_name, ' ', user.first_name),' ', A('[%s'%T('Logout'),_href=URL('plugin_auth','login',args=['logout'])), SPAN('  | '),A('%s]'%T('Change password'),_href=URL('plugin_auth','change_password')),_class='auth_navbar')}}{{except:pass}}		          
+    
+		<div id="logo"><!-- put your logo here --></div>
+		<div style="clear: both;"></div><!-- Clear the divs -->
+	{{end}}	
+	</div>
+</div><!-- statusbar -->
+		

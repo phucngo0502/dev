@@ -1,0 +1,16 @@
+{{extend 'layout.html'}}
+<script src="{{=URL(c='static',f='plugin_folder/jstree/jstree.min.js')}}"></script>
+<link rel="stylesheet" href="{{=URL(c='static',f='plugin_folder/jstree/themes/default/style.min.css')}}">
+
+ <div class="row">
+	<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" id='sidebar'>
+		{{=content}}
+	
+	</div>
+	<div class="col-lg-9 col-lg-offset-3 col-md-9 col-md-offset-3 col-sm-9  col-sm-offset-3 col-xs-9 col-xs-offset-3">
+		<div id='event_result'></div>
+    </div>
+</div>
+
+
+          

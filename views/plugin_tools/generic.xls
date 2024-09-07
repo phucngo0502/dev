@@ -1,0 +1,38 @@
+{{ 
+# to use this download and unzip pyXLWriter in applications/[yourapp]/ modules/ 
+import uuid, os ,datetime
+exec('import applications.%s.modules.xlwt as xl' % request.application) 
+filename=os.path.join(request.folder,'private','%s.xls' % uuid.uuid4()) 
+workbook = xl.Workbook(encoding='utf-8') 
+
+#head = xl.easyxf('font: bold on;borders: top 1, bottom 1, left 1, right 1; align: wrap on, vert centre, horiz left')
+#index = xl.easyxf('borders: top 1, bottom 1, left 1, right 1; align: wrap on, vert centre, horiz center')
+#cell = xl.easyxf('borders: top 1, bottom 1, left 1, right 1; align: wrap on, vert centre, horiz left')			
+pagename = 'file'
+for page in pages: 
+	pagename,content = page[0], page[1]	
+	worksheet = workbook.add_sheet(pagename)
+    for (r,row) in enumerate(content): 
+		for (c,element) in enumerate(row): 
+            worksheet.write(r,c,element) 
+			"""
+			if r<2: 
+				style = head
+			elif c==0: 
+				style = index 
+			else:
+				style = cell
+			pass
+            worksheet.write(r,c,element,style)
+			"""	
+        pass 
+    pass 
+pass 
+workbook.save(filename) 
+data = open(filename,'rb').read() 
+os.unlink(filename) 
+response.headers['Content-Type']='application/vnd.ms-excel'
+response.headers['Content-disposition'] = 'attachment;filename="'+pagename+'_'+str(datetime.date.today())+'.xls"'  
+#filename = str(datetime.date.today()) + filename
+response.write(data,escape=False) 
+}} 

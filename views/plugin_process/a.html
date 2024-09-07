@@ -1,0 +1,11 @@
+{{#extend 'plugin_process/layout.html'}}
+<html>
+<body>
+{{include 'web2py_ajax.html'}}
+<link href="{{=URL(r=request,c='static',f='plugin_app/colorbox/colorbox.css')}}" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="{{=URL(r=request,c='static',f='plugin_app/colorbox/jquery.colorbox.js')}}"></script>
+<script> 
+$.colorbox({html:"<h1>Welcome</h1>"});
+</script>
+</body>
+</html> 

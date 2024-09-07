@@ -1,0 +1,2 @@
+ 
+{{=content.view(page = int(request.args(0)))}}

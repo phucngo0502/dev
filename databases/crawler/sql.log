@@ -1,0 +1,21 @@
+timestamp: 2015-07-29T15:10:57.857000
+CREATE TABLE crawler(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name CHAR(512),
+    settings TEXT,
+    publish_on TIMESTAMP
+);
+success!
+timestamp: 2015-07-29T15:10:57.869000
+CREATE TABLE crawlerdata(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    crawler INTEGER,
+    urllink CHAR(512),
+    textcontent TEXT,
+    tablename CHAR(512),
+    table_id INTEGER,
+    created_on TIMESTAMP,
+    updated_on TIMESTAMP,
+    publish_on TIMESTAMP
+);
+success!

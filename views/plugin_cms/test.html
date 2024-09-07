@@ -1,0 +1,52 @@
+{{extend 'layout.html'}}
+{{=content}}
+
+<button onclick="myFunction()">Try it</button>
+
+<p id="demo"></p>
+
+<input type="checkbox" value=1 name="objects" class="messageCheckbox"> TEST 01</input><br>
+<input type="checkbox" value=2 name="objects" class="messageCheckbox"> TEST 02</input><br>
+<input type="checkbox" value=3 name="objects" class="messageCheckbox"> TEST 03</input><br>
+
+
+<script>
+function myFunction()
+{
+var data = $.map($("input:checked"), function(elem, idx) {return "&"+$(elem).attr("name")+"="+ $(elem).val();}).join('');	
+var x;
+var r=confirm(data);
+if (r==true)
+  {
+  x="You pressed OK!";
+  }
+else
+  {
+  x="You pressed Cancel!";
+  }
+document.getElementById("demo").innerHTML=x;
+}
+</script>
+
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('.button_process').click(function () {
+			var r=confirm( "Chấp nhận " + $(this).html() + " " + $("input:checked").length.toString() + " {{=request.args(2)}} đã chọn?");
+			if (r==false) {
+				return 0;
+			} 
+			var data = $.map($("input:checked"), function(elem, idx) {return "&"+$(elem).attr("name")+"="+ $(elem).val();}).join('');	
+			$.ajax({
+				url: "{{=URL(r=request,c='plugin_cms',f='abc',args=request.args)}}",
+				type: "GET",
+				data: data,
+				cache: false,
+				success: function (html) {
+					$('#demo').html(html);
+				}
+				});				
+		});
+
+	});
+</script>

@@ -1,0 +1,44 @@
+<script language="JavaScript" type="text/javascript">
+	var base64, uri;
+	function sign()   // Hàm ký văn bản
+	{
+		var base64 = document.getElementById('attachment-signer').signFile();
+		var attName = document.getElementById('attachment-signer').getFilePath();
+		$('#AttachmentBase64').val(base64);
+		$('#AttachmentName').val(attName);
+		$('#attachment-name').val(attName);
+		var filename = attName.replace(/^.*[\\\/]/, '')
+		// Sử dụng ajax để đưa file với base64 và filename lên server
+		if (filename == "") {
+			return 0;
+		}
+		$.ajax({
+			type: "POST",
+			url	: "{{=URL(f="upload_sign",vars=request.vars,args=request.args)}}",
+			async : false,
+			data: {file:base64,filename:filename},
+			contentType: "application/x-www-form-urlencoded",
+			success : function(data){
+				$("#progress").html(data);
+			}
+		});
+			
+	}
+	function verify() // Hàm xác thực
+	{
+		var fileName = $('#attachment-name').val();
+		var v = document.getElementById('attachment-signer').verifyFile(fileName, base64);
+		var msg = (v) ? 'Tệp đã được ký' : 'Tệp chưa được ký';
+		alert(msg);
+	}
+</script>
+<div>
+	<applet code="com/ecoit/ca/applet/SampleApplet.class" archive="{{=URL(c='static',f='ChuKySo/sCAApplet.jar')}}" id="attachment-signer" height="40" width="400">
+	</applet>
+	<input type="button" class="tdbutton" value="Ký tệp" style="height: 30px; width: 80px; margin-top:-30px;" id="sign-attachment" onclick="sign();">
+</div>
+<div style="display: none">
+	<textarea id="AttachmentBase64" rows="7" cols="50"></textarea>
+	<input id="AttachmentName" value="">
+	<input id="attachment-name" type="hidden" value="">
+</div>

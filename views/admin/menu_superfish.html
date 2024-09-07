@@ -1,0 +1,64 @@
+<link href="{{=URL('static','plugins/superfish/dist/css/superfish.css')}}" rel="stylesheet">	
+<link href="{{=URL('static','plugins/superfish/dist/css/superfish-vertical.css')}}" rel="stylesheet">	
+
+<script src="{{=URL('static','plugins/superfish/dist/js/hoverIntent.js')}} "></script>
+<script src="{{=URL('static','plugins/superfish/dist/js/superfish.js')}} "></script>
+
+<script>
+
+	jQuery(document).ready(function(){
+		jQuery('ul.sf-menu').superfish({
+			animation: {height:'show'},	// slide-down effect without fade-in
+			delay:		 700			// 1.2 second delay on mouseout
+		});
+	});
+
+</script>
+
+<div class="sidebar-search">
+	<div class="input-group custom-search-form">
+		<input type="text" class="form-control" placeholder="Nhập từ khóa...">
+		<span class="input-group-btn">
+			<a class='btn submit'>
+				<i class="fa fa-search"></i>
+			</a>
+		</span>
+	</div>
+</div>
+
+
+		<ul class="sf-menu sf-vertical" id="example">
+			<li>
+				<a href="{{=URL(c='admin',f='index.html')}}" class='sf_1'><i class="fa fa-dashboard fa-fw"></i> Bảng điều khiển</a>
+			</li>
+			<li>
+				<a href="{{=URL(c='admin',f='tem_icon')}}" class='sf_1'><i class="fa  fa-globe fa-fw" ></i> Icon</a>
+			</li>	
+			<li>
+				<a href="{{=URL(c='admin',f='datatable')}}" class='sf_1'><i class="fa  fa-database fa-fw" ></i> Datatable</a>
+			</li>	
+			<li>
+				<a href="{{=URL(c='admin',f='tags')}}" class='sf_1'><i class="fa  fa-tags fa-fw" ></i> Tags Input</a>
+			</li>
+			<li>
+				<a href="{{=URL(c='admin',f='modals')}}" class='sf_1'><i class="fa  fa-compress fa-fw" ></i> Modals</a>
+			</li>			
+			
+			<li>
+				<a href="{{=URL(c='admin',f='calendar')}}" class='sf_1'><i class="fa  fa-compress fa-fw" ></i> FullCalendar</a>
+			</li>
+			
+			<li>
+				<a href="#" class='sf_1'><i class="fa  fa-tumblr fa-fw"  ></i> Tin tức - sự kiện</a>
+				<ul>
+					<li><a href="#" class='sf_2'>Chính trị</a></li>
+					<li><a href="#" class='sf_2'>Kinh tế</a></li>
+					<li><a href="#" class='sf_2'>Xã hội</a></li>
+					<li><a href="#" class='sf_2'>Giáo dục</a></li>
+					<li><a href="#" class='sf_2'>An ninh quốc phòng</a></li>
+				</ul>
+			</li>
+			
+			
+		</ul>
+		

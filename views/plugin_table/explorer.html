@@ -1,0 +1,65 @@
+{{extend 'layout.html'}}
+{{include "menu_fish.html"}}
+
+<script src="{{=URL(r=request,c='static',f='plugin_app/select2/select2.min.js')}}" type="text/javascript"></script>
+<link href="{{=URL(r=request,c='static',f='plugin_app/select2/select2.css')}}" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript">
+
+function CheckAll() {
+	$('#explorer_view :checkbox').each(function () {
+		$(this).prop('checked', document.getElementById("check_all").checked);
+	});         
+};  
+
+function btnclick(f) {
+		if ($("#explorer_view input:checked").length == 0) {
+			return 0;
+		}
+		var r=confirm( "Chấp nhận " + $("#"+f).children('span').children('span').html() + " " + $("input:checked").length.toString() + " dữ liệu đã chọn?");
+		if (r==false) {
+			return 0;
+		} 
+		
+		var url = "{{=URL(f='fff',args=request.args,vars=request.vars)}}".replace("fff",f);
+		var data = $.map($("#explorer_view input:checked"), function(elem, idx) {return "&ids="+ $(elem).val();}).join('');	
+		$.ajax({
+			url: url,
+			type: "GET",
+			data: data,
+			cache: true,
+			success: function (html) {
+				if (html!='') {
+					$("#CallBackModal").html(html);
+					$("#CallBackModal").modal('show');
+					location.reload();
+				}
+			}
+		});				
+};
+	
+$(document).ready(function(){
+	$(".js-example-placeholder-single").select2({
+		placeholder: "Chọn dữ liệu ...",
+		allowClear: true
+	});
+	$(".js-example-placeholder-multiple").select2({
+		placeholder: "Chọn dữ liệu ...",
+		allowClear: true	
+	});
+});
+		
+</script>
+
+
+<div class="row">
+	<div class="col-lg-2 col-md-3 col-sm-3 col-xs-1" id='sidebar'>
+		{{=LOAD(f="folder_menu.html",args=request.args,vars=request.vars,ajax=False)}}
+	</div>
+	<div class="col-lg-10 col-lg-offset-2 col-md-9 col-md-offset-3 col-sm-9 col-sm-offset-3 col-xs-11 col-xs-offset-1">
+		{{=content}}
+    </div>
+</div>
+
+<div id="CallBackModal" class="modal fade">
+</div>

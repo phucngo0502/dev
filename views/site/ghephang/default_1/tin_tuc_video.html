@@ -1,0 +1,6 @@
+{{extend 'site/ghephang/default/layout.html'}}
+<div class="wr_breadcrumb">
+{{=cms.breadcrumb(parent=cms.get_folder(request.args(0)))}}
+</div>
+
+	{{=portlet.display(89)}}

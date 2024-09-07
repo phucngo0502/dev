@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+{{include 'layout/js.html'}}
+{{include 'layout/trang_chu.html_js_css.html'}}
+<body>
+<div class="container">
+
+  <div class="clearfix">
+   <div class="col-md-12 column ui-sortable">
+    <div class="clearfix">
+     <div class="col-md-12 column ui-sortable">
+      {{=portlet.display(1)}}
+      {{=portlet.display(2)}}
+     </div>
+    </div>
+    <div class="clearfix" id="main_page">
+     <div class="col-md-3 column hidden-sm hidden-xs ui-sortable" id="sidebar_left">
+      {{=portlet.display(5)}}
+      {{=portlet.display(12)}}
+      {{=portlet.display(7)}}
+     </div>
+     <div class="col-md-9 column ui-sortable" id="main_content">
+      <div class="clearfix">
+       <div class="col-md-12 column ui-sortable">
+        {{include}}
+        <div class="clearfix">
+         <div class="col-md-6 column ui-sortable">
+          {{=portlet.display(6)}}
+         </div>
+         <div class="col-md-6 column ui-sortable">
+          {{=portlet.display(7)}}
+         </div>
+        </div>
+        {{=portlet.display(11)}}
+        {{=portlet.display(9)}}
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="clearfix">
+     <div class="col-md-12 column ui-sortable">
+      {{=portlet.display(13)}}
+     </div>
+    </div>
+   </div>
+  </div>
+
+</div>
+</body>
+</html>

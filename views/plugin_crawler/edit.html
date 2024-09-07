@@ -1,0 +1,85 @@
+{{extend 'layout.html'}}
+
+<style>	
+	.divborder {
+		border: 1px solid gray;
+		padding: 2px;
+	}	
+	.divborder input{
+		align: float-right;
+	}	
+	
+</style>	
+
+<div class="row">
+	{{=content}}
+</div>
+         	
+<script type="text/javascript">
+	function getdiv(id) {
+		var r=confirm( "Chấp nhận chọn?" );
+		if (r==false) {
+			return 0;
+		}
+		var data = "&id=" + id + "&url=" + document.getElementById("urllink").value;
+		$.ajax({
+			url: "{{=URL(f='getdiv.load',args=request.args,vars=request.vars)}}",
+			type: "GET",
+			data: data,
+			cache: true,
+			success: function (html) {
+				$("#analyse_result").html(html);
+			}
+		});				
+
+		return 0;
+	};	
+
+	function gettags() {
+		var r=confirm( "Chấp nhận chọn?" );
+		if (r==false) {
+			return 0;
+		}
+		var data = $.map($("input:checked"), function(elem, idx) {return "&"+"checkbox="+ $(elem).val();}).join('');
+		data = data + $.map($("input:text"), function(elem, idx) {return "&"+$(elem).attr("name")+"="+ $(elem).val();}).join('');
+		data = data+"&id=" + document.getElementById("divid").value
+		data = data+"&tablename=" + document.getElementById("tablename").value
+		$.ajax({
+			url: "{{=URL(f='gettags.load',args=request.args,vars=request.vars)}}",
+			type: "GET",
+			data: data,
+			cache: true,
+			success: function (html) {
+				$("#analyse_result").html(html);
+			}
+		});				
+
+		return 0;
+	};
+
+	function getfields() {
+		var r=confirm( "Chấp nhận lưu lại?" );
+		if (r==false) {
+			return 0;
+		}
+		var data = $.map($("input:text"), function(elem, idx) {return "&"+$(elem).attr("name")+"="+ $(elem).val();}).join('');
+		data = data+"&id=" + document.getElementById("divid").value
+		var e = document.getElementsByTagName("select");
+		for (var i = 0; i < e.length; i++){
+		  var name = e[i].getAttribute("name");
+		  data = data +"&"+name+"="+e[i].options[e[i].selectedIndex].value;
+		}		
+		$.ajax({
+			url: "{{=URL(f='update.load',args=request.args,vars=request.vars)}}",
+			type: "GET",
+			data: data,
+			cache: true,
+			success: function (html) {
+				$("#analyse_result").html(html);
+			}
+		});				
+
+		return 0;
+	};
+	
+</script>	

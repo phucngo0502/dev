@@ -1,0 +1,616 @@
+(dp1
+S'output'
+p2
+S"<type 'exceptions.ImportError'> No module named bs4"
+p3
+sS'layer'
+p4
+S'C:\\Users\\F6\\Downloads\\bahadi\\9026-py2\\applications\\cms\\models\\db.py'
+p5
+sS'code'
+p6
+S'# -*- coding: utf-8 -*-\n\n#########################################################################\n## This scaffolding model makes your app work on Google App Engine too\n## File is released under public domain and you can use without limitations\n#########################################################################\n\n## if SSL/HTTPS is properly configured and you want all HTTP requests to\n## be redirected to HTTPS, uncomment the line below:\n# request.requires_https()\n\ntry:\n\tfrom plugin_config import Configsite\n\tdb = DAL(Configsite().database_name, fake_migrate=False,migrate = True, pool_size=Configsite().pool_size or 1, check_reserved=[\'all\'],folder=request.folder + Configsite().database_folder)\n\tsite_name =Configsite().site_name\n\ttemplate =Configsite().template\n\tpage_home =Configsite().page_home\n\tstatic_default = \'site/%s/template/%s\'%(site_name,template)\n\tsite_default = \'site/%s\'%(site_name)\n\t\nexcept Exception, e:\n\tdb = DAL(\'sqlite://cms.db3\', fake_migrate=False,migrate = True, pool_size=1, check_reserved=[\'all\'],folder=request.folder +\'/databases/site/doanhnghiep\')\n\tsite_name =\'doanhnghiep\'\n\ttemplate = \'green\'\n\tstatic_default = \'site/%s/template/%s\'%(site_name,template)\n\tsite_default = \'site/%s\'%(site_name)\n\tpage_home=\'trang-chu\'\n\t\nfrom gluon import current\t\t\nif current.request.env.http_host=="admin.ivinh.com":\n\tfrom plugin_config import Configsite\n\tcf= Configsite()\n\tcf.define_config_site(True)\n\tadmin = cf.db\t\n\n## choose a style for forms\n\nfrom gluon.contrib.appconfig import AppConfig\nPortalConfig = AppConfig(reload=True)\nresponse.formstyle = PortalConfig.take(\'forms.formstyle\')  # or \'bootstrap3_stacked\' or \'bootstrap2\' or other\nresponse.form_label_separator = PortalConfig.take(\'forms.separator\')\n\t\n\t\nfrom plugin_cms import Cms\ncms = Cms()\nfrom plugin_portlet import Portlet\nportlet = Portlet(cms=cms)\nportlet.define_portlet()\n\nT.force(\'vn\')\n\nimport cStringIO\nfrom gluon.tools import Service, Auth\nauth = Auth(db)\nservice = Service()\n\t\n\t\n\nif request.controller==\'portal\':\n\tsession.forget(response)\n\tfrom plugin_auth import ProcessAuth\n\tcas_provider = \'http://%s/%s/default/user/cas\'%(request.env.http_host,PortalConfig.take(\'auth.provider\')) if PortalConfig.take(\'auth.provider\') else None\n\tauth = ProcessAuth(db, hmac_key=Auth.get_or_create_key(), cas_provider=cas_provider) \n\tauth.init(True)\n\tcms.auth= auth\nelse:\n\tsession.connect(request, response, separate=True)\n\n\tportlet.define_portletview()\t\n\tfrom plugin_ckeditor import CKEditor\n\tCKEditor(db).define_tables()\n\n\tfrom plugin_auth import ProcessAuth\n\tcas_provider = \'http://%s/%s/default/user/cas\'%(request.env.http_host,PortalConfig.take(\'auth.provider\')) if PortalConfig.take(\'auth.provider\') else None\n\tauth = ProcessAuth(db, hmac_key=Auth.get_or_create_key(), cas_provider=cas_provider) \n\tauth.init(True)\n\tcms.auth= auth\n\n\tfrom plugin_process import ProcessModel\n\tif request.controller in [\'appadmin\',\'plugin_tools\']:\n\t\tcms = Cms(db=db)\n\t\tcmsdb = cms.db\n\t\tcms.define_tables(True)\n\t\tprocessmodel = ProcessModel()\n\t\tprocessmodel.define_process(True)\n\t\tprocessmodel.define_procedures(True)\n\t\tprocessmodel.define_process_log(True)\n\t\tprocessmodel.define_process_lock(True)\n\t\tprocessmodel.define_isread(True)\n\t\tfrom plugin_upload import FileUpload\n\t\tFileUpload(db=cmsdb,upload_id=None).define_table(True)\t\n\t\tportlet.define_portlet(True)\n\t\tportlet.define_portletview(True)\t\t\n\t\tfrom plugin_crawler import Crawler\n\t\tc = Crawler()\n\t\tc.define_crawler(True)\n\t\tc.define_crawlerdata(True)\n\t\tcrawler = c.db\n\telif request.controller in [\'plugin_process\',\'plugin_comment\',\'plugin_auth\']:\n\t\tcms = Cms(db=db)\n\t\tprocessmodel = ProcessModel()\n\t\tprocessmodel.define_process()\n\t\tprocessmodel.define_procedures()\n\t\tprocessmodel.define_process_log()\n\t\tprocessmodel.define_process_lock()\n\nimport os\ndef setting_config(key=None,default={},path=None):\n\ttry:\n\t\tif not path: path=os.path.join(request.folder,\'config.py\')\n\t\tfile = open(path,\'r\')\n\t\tdata = file.read().replace(chr(13),\'\')\n\t\tfile.close()\n\t\ttmp = eval(data)\n\t\tif not key: return tmp\n\t\treturn tmp[key]\n\texcept:\n\t\treturn default\n\t\t\napi_naso ="https://website:gkajhsafplafgalsda@banhang.bahadi.vn/app"\nlink_naso ="https://banhang.bahadi.vn/app"\ndomain_naso ="https://banhang.bahadi.vn/app"'
+p7
+sS'snapshot'
+p8
+(dp9
+S'exception'
+p10
+(dp11
+S'__hash__'
+p12
+S"<method-wrapper '__hash__' of exceptions.ImportError object>"
+p13
+sS'__setattr__'
+p14
+S"<method-wrapper '__setattr__' of exceptions.ImportError object>"
+p15
+sS'__reduce_ex__'
+p16
+S'<built-in method __reduce_ex__ of exceptions.ImportError object>'
+p17
+sS'__getslice__'
+p18
+S"<method-wrapper '__getslice__' of exceptions.ImportError object>"
+p19
+sS'__getitem__'
+p20
+S"<method-wrapper '__getitem__' of exceptions.ImportError object>"
+p21
+sS'__setstate__'
+p22
+S'<built-in method __setstate__ of exceptions.ImportError object>'
+p23
+sS'__reduce__'
+p24
+S'<built-in method __reduce__ of exceptions.ImportError object>'
+p25
+sS'__str__'
+p26
+S"<method-wrapper '__str__' of exceptions.ImportError object>"
+p27
+sS'__format__'
+p28
+S'<built-in method __format__ of exceptions.ImportError object>'
+p29
+sS'__getattribute__'
+p30
+S"<method-wrapper '__getattribute__' of exceptions.ImportError object>"
+p31
+sS'__class__'
+p32
+S"<type 'exceptions.ImportError'>"
+p33
+sS'__unicode__'
+p34
+S'<built-in method __unicode__ of exceptions.ImportError object>'
+p35
+sS'__delattr__'
+p36
+S"<method-wrapper '__delattr__' of exceptions.ImportError object>"
+p37
+sS'__subclasshook__'
+p38
+S'<built-in method __subclasshook__ of type object>'
+p39
+sS'__repr__'
+p40
+S"<method-wrapper '__repr__' of exceptions.ImportError object>"
+p41
+sS'args'
+p42
+S"('No module named bs4',)"
+p43
+sS'__dict__'
+p44
+S'{}'
+p45
+sS'__sizeof__'
+p46
+S'<built-in method __sizeof__ of exceptions.ImportError object>'
+p47
+sS'__doc__'
+p48
+S'"Import can\'t find module, or can\'t find name in module."'
+p49
+sS'__init__'
+p50
+S"<method-wrapper '__init__' of exceptions.ImportError object>"
+p51
+sS'__new__'
+p52
+S'<built-in method __new__ of type object>'
+p53
+ssS'evalue'
+p54
+S'No module named bs4'
+p55
+sS'request'
+p56
+cgluon.html
+XML_unpickle
+p57
+(S's\xafW\x00\x00<div><table><tr><td style="font-weight:bold;vertical-align:top;">ajax</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">application</td><td style="vertical-align:top;">:</td><td><div>cms</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">args</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cid</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">client</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">controller</td><td style="vertical-align:top;">:</td><td><div>portal</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cookies</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">session_id_admin</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1-c763ced5-14fd-4e19-a804-35ce3b346616<table><tr><td style="font-weight:bold;vertical-align:top;">comment</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">domain</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">expires</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">httponly</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">max-age</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">path</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">secure</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">version</td><td style="vertical-align:top;">:</td><td><div></div></td></tr></table></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">env</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">HTTP_ACCEPT</td><td style="vertical-align:top;">:</td><td><div>text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_ACCEPT_ENCODING</td><td style="vertical-align:top;">:</td><td><div>gzip, deflate, br, zstd</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_ACCEPT_LANGUAGE</td><td style="vertical-align:top;">:</td><td><div>en-US,en;q=0.9,vi-VN;q=0.8,vi;q=0.7,fr-FR;q=0.6,fr;q=0.5</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_CONNECTION</td><td style="vertical-align:top;">:</td><td><div>keep-alive</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_COOKIE</td><td style="vertical-align:top;">:</td><td><div>session_id_admin=127.0.0.1-c763ced5-14fd-4e19-a804-35ce3b346616</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_HOST</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1:8000</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_SEC_CH_UA</td><td style="vertical-align:top;">:</td><td><div>&quot;Not)A;Brand&quot;;v=&quot;99&quot;, &quot;Google Chrome&quot;;v=&quot;127&quot;, &quot;Chromium&quot;;v=&quot;127&quot;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_SEC_CH_UA_MOBILE</td><td style="vertical-align:top;">:</td><td><div>?0</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_SEC_CH_UA_PLATFORM</td><td style="vertical-align:top;">:</td><td><div>&quot;Windows&quot;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_SEC_FETCH_DEST</td><td style="vertical-align:top;">:</td><td><div>document</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_SEC_FETCH_MODE</td><td style="vertical-align:top;">:</td><td><div>navigate</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_SEC_FETCH_SITE</td><td style="vertical-align:top;">:</td><td><div>none</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_SEC_FETCH_USER</td><td style="vertical-align:top;">:</td><td><div>?1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_UPGRADE_INSECURE_REQUESTS</td><td style="vertical-align:top;">:</td><td><div>1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_USER_AGENT</td><td style="vertical-align:top;">:</td><td><div>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">PATH_INFO</td><td style="vertical-align:top;">:</td><td><div>/</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">QUERY_STRING</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">REMOTE_ADDR</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">REMOTE_PORT</td><td style="vertical-align:top;">:</td><td><div>51719</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">REQUEST_METHOD</td><td style="vertical-align:top;">:</td><td><div>GET</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">SCRIPT_NAME</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">SERVER_NAME</td><td style="vertical-align:top;">:</td><td><div>DESKTOP-GUAHLA8</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">SERVER_PORT</td><td style="vertical-align:top;">:</td><td><div>8000</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">SERVER_PROTOCOL</td><td style="vertical-align:top;">:</td><td><div>HTTP/1.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">SERVER_SOFTWARE</td><td style="vertical-align:top;">:</td><td><div>Rocket 1.2.6</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">app_folders</td><td style="vertical-align:top;">:</td><td><div>set([&#x27;C:\\\\Users\\\\F6\\\\Downloads\\\\bahadi\\\\9026-py2\\\\applications\\\\cms\\\\&#x27;])</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">applications_parent</td><td style="vertical-align:top;">:</td><td><div>C:\\Users\\F6\\Downloads\\bahadi\\9026-py2</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cmd_args</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cmd_options</td><td style="vertical-align:top;">:</td><td><div>&lt;Values at 0x3fc9d50: {&#x27;verbose&#x27;: False, &#x27;ip&#x27;: &#x27;127.0.0.1&#x27;, &#x27;debuglevel&#x27;: 30, &#x27;with_scheduler&#x27;: False, &#x27;shutdown_timeout&#x27;: 5, &#x27;taskbar&#x27;: False, &#x27;with_coverage&#x27;: False, &#x27;pid_filename&#x27;: &#x27;httpserver.pid&#x27;, &#x27;maxthreads&#x27;: None, &#x27;softcron&#x27;: False, &#x27;server_name&#x27;: &#x27;DESKTOP-GUAHLA8&#x27;, &#x27;bpython&#x27;: False, &#x27;nogui&#x27;: False, &#x27;port&#x27;: 8000, &#x27;print_errors&#x27;: False, &#x27;extcron&#x27;: False, &#x27;runcron&#x27;: False, &#x27;run_system_tests&#x27;: False, &#x27;test&#x27;: None, &#x27;folder&#x27;: &#x27;C:\\\\Users\\\\F6\\\\Downloads\\\\bahadi\\\\9026-py2&#x27;, &#x27;config&#x27;: &#x27;&#x27;, &#x27;minthreads&#x27;: None, &#x27;shell&#x27;: None, &#x27;run&#x27;: &#x27;&#x27;, &#x27;log_filename&#x27;: &#x27;httpserver.log&#x27;, &#x27;profiler_dir&#x27;: None, &#x27;args&#x27;: [&#x27;&#x27;], &#x27;socket_timeout&#x27;: 5, &#x27;ssl_ca_certificate&#x27;: None, &#x27;scheduler&#x27;: None, &#x27;interfaces&#x27;: None, &#x27;ssl_private_key&#x27;: &#x27;&#x27;, &#x27;gae&#x27;: None, &#x27;password&#x27;: &#x27;******&#x27;, &#x27;request_queue_size&#x27;: 5, &#x27;ssl_certificate&#x27;: &#x27;&#x27;, &#x27;cronjob&#x27;: False, &#x27;numthreads&#x27;: None, &#x27;quiet&#x27;: False, &#x27;import_models&#x27;: False, &#x27;timeout&#x27;: 10, &#x27;plain&#x27;: False, &#x27;nobanner&#x27;: False}&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">db_sessions</td><td style="vertical-align:top;">:</td><td><div>set([])</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">debugging</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">gluon_parent</td><td style="vertical-align:top;">:</td><td><div>C:\\Users\\F6\\Downloads\\bahadi\\9026-py2</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_accept</td><td style="vertical-align:top;">:</td><td><div>text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_accept_encoding</td><td style="vertical-align:top;">:</td><td><div>gzip, deflate, br, zstd</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_accept_language</td><td style="vertical-align:top;">:</td><td><div>en-US,en;q=0.9,vi-VN;q=0.8,vi;q=0.7,fr-FR;q=0.6,fr;q=0.5</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_connection</td><td style="vertical-align:top;">:</td><td><div>keep-alive</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_cookie</td><td style="vertical-align:top;">:</td><td><div>session_id_admin=127.0.0.1-c763ced5-14fd-4e19-a804-35ce3b346616</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_host</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1:8000</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_sec_ch_ua</td><td style="vertical-align:top;">:</td><td><div>&quot;Not)A;Brand&quot;;v=&quot;99&quot;, &quot;Google Chrome&quot;;v=&quot;127&quot;, &quot;Chromium&quot;;v=&quot;127&quot;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_sec_ch_ua_mobile</td><td style="vertical-align:top;">:</td><td><div>?0</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_sec_ch_ua_platform</td><td style="vertical-align:top;">:</td><td><div>&quot;Windows&quot;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_sec_fetch_dest</td><td style="vertical-align:top;">:</td><td><div>document</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_sec_fetch_mode</td><td style="vertical-align:top;">:</td><td><div>navigate</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_sec_fetch_site</td><td style="vertical-align:top;">:</td><td><div>none</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_sec_fetch_user</td><td style="vertical-align:top;">:</td><td><div>?1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_upgrade_insecure_requests</td><td style="vertical-align:top;">:</td><td><div>1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_user_agent</td><td style="vertical-align:top;">:</td><td><div>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_jython</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_pypy</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_source</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">path_info</td><td style="vertical-align:top;">:</td><td><div>/</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">query_string</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">remote_addr</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">remote_port</td><td style="vertical-align:top;">:</td><td><div>51719</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">request_method</td><td style="vertical-align:top;">:</td><td><div>GET</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">request_uri</td><td style="vertical-align:top;">:</td><td><div>/cms/portal/folder</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">script_name</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">server_name</td><td style="vertical-align:top;">:</td><td><div>DESKTOP-GUAHLA8</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">server_port</td><td style="vertical-align:top;">:</td><td><div>8000</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">server_protocol</td><td style="vertical-align:top;">:</td><td><div>HTTP/1.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">server_software</td><td style="vertical-align:top;">:</td><td><div>Rocket 1.2.6</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">web2py_original_uri</td><td style="vertical-align:top;">:</td><td><div>/</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">web2py_path</td><td style="vertical-align:top;">:</td><td><div>C:\\Users\\F6\\Downloads\\bahadi\\9026-py2</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">web2py_version</td><td style="vertical-align:top;">:</td><td><div>2.21.1-stable+timestamp.2020.11.28.04.10.44</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.errors</td><td style="vertical-align:top;">:</td><td><div>&lt;open file &#x27;&lt;stderr&gt;&#x27;, mode &#x27;w&#x27; at 0x02D3D0D0&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.file_wrapper</td><td style="vertical-align:top;">:</td><td><div>&lt;class wsgiref.util.FileWrapper at 0x040019D0&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.input</td><td style="vertical-align:top;">:</td><td><div>&lt;socket._fileobject object at 0x03FC6E70&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.multiprocess</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.multithread</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.run_once</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.url_scheme</td><td style="vertical-align:top;">:</td><td><div>http</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.version</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>1</div></td></tr><tr><td><div>0</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_errors</td><td style="vertical-align:top;">:</td><td><div>&lt;open file &#x27;&lt;stderr&gt;&#x27;, mode &#x27;w&#x27; at 0x02D3D0D0&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_file_wrapper</td><td style="vertical-align:top;">:</td><td><div>&lt;class wsgiref.util.FileWrapper at 0x040019D0&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_input</td><td style="vertical-align:top;">:</td><td><div>&lt;socket._fileobject object at 0x03FC6E70&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_multiprocess</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_multithread</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_run_once</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_url_scheme</td><td style="vertical-align:top;">:</td><td><div>http</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_version</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>1</div></td></tr><tr><td><div>0</div></td></tr></table></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">extension</td><td style="vertical-align:top;">:</td><td><div>html</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">folder</td><td style="vertical-align:top;">:</td><td><div>C:\\Users\\F6\\Downloads\\bahadi\\9026-py2\\applications\\cms\\</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">function</td><td style="vertical-align:top;">:</td><td><div>folder</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">global_settings</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">app_folders</td><td style="vertical-align:top;">:</td><td><div>set([&#x27;C:\\\\Users\\\\F6\\\\Downloads\\\\bahadi\\\\9026-py2\\\\applications\\\\cms\\\\&#x27;])</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">applications_parent</td><td style="vertical-align:top;">:</td><td><div>C:\\Users\\F6\\Downloads\\bahadi\\9026-py2</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cmd_args</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cmd_options</td><td style="vertical-align:top;">:</td><td><div>&lt;Values at 0x3fc9d50: {&#x27;verbose&#x27;: False, &#x27;ip&#x27;: &#x27;127.0.0.1&#x27;, &#x27;debuglevel&#x27;: 30, &#x27;with_scheduler&#x27;: False, &#x27;shutdown_timeout&#x27;: 5, &#x27;taskbar&#x27;: False, &#x27;with_coverage&#x27;: False, &#x27;pid_filename&#x27;: &#x27;httpserver.pid&#x27;, &#x27;maxthreads&#x27;: None, &#x27;softcron&#x27;: False, &#x27;server_name&#x27;: &#x27;DESKTOP-GUAHLA8&#x27;, &#x27;bpython&#x27;: False, &#x27;nogui&#x27;: False, &#x27;port&#x27;: 8000, &#x27;print_errors&#x27;: False, &#x27;extcron&#x27;: False, &#x27;runcron&#x27;: False, &#x27;run_system_tests&#x27;: False, &#x27;test&#x27;: None, &#x27;folder&#x27;: &#x27;C:\\\\Users\\\\F6\\\\Downloads\\\\bahadi\\\\9026-py2&#x27;, &#x27;config&#x27;: &#x27;&#x27;, &#x27;minthreads&#x27;: None, &#x27;shell&#x27;: None, &#x27;run&#x27;: &#x27;&#x27;, &#x27;log_filename&#x27;: &#x27;httpserver.log&#x27;, &#x27;profiler_dir&#x27;: None, &#x27;args&#x27;: [&#x27;&#x27;], &#x27;socket_timeout&#x27;: 5, &#x27;ssl_ca_certificate&#x27;: None, &#x27;scheduler&#x27;: None, &#x27;interfaces&#x27;: None, &#x27;ssl_private_key&#x27;: &#x27;&#x27;, &#x27;gae&#x27;: None, &#x27;password&#x27;: &#x27;******&#x27;, &#x27;request_queue_size&#x27;: 5, &#x27;ssl_certificate&#x27;: &#x27;&#x27;, &#x27;cronjob&#x27;: False, &#x27;numthreads&#x27;: None, &#x27;quiet&#x27;: False, &#x27;import_models&#x27;: False, &#x27;timeout&#x27;: 10, &#x27;plain&#x27;: False, &#x27;nobanner&#x27;: False}&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">db_sessions</td><td style="vertical-align:top;">:</td><td><div>set([])</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">debugging</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">gluon_parent</td><td style="vertical-align:top;">:</td><td><div>C:\\Users\\F6\\Downloads\\bahadi\\9026-py2</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_jython</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_pypy</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_source</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">local_hosts</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>169.254.51.215</div></td></tr><tr><td><div>fe80::87a4:edc7:3b27:db6f%15</div></td></tr><tr><td><div>192.168.1.117</div></td></tr><tr><td><div>fe80::7fed:a3c0:ee6e:c02e%2</div></td></tr><tr><td><div>::ffff:127.0.0.1</div></td></tr><tr><td><div>::1</div></td></tr><tr><td><div>DESKTOP-GUAHLA8</div></td></tr><tr><td><div>169.254.226.3</div></td></tr><tr><td><div>fe80::d487:29a4:871:bc6e%14</div></td></tr><tr><td><div>127.0.0.1</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">web2py_version</td><td style="vertical-align:top;">:</td><td><div>2.21.1-stable+timestamp.2020.11.28.04.10.44</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_https</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_local</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_restful</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_scheduler</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_shell</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">now</td><td style="vertical-align:top;">:</td><td><div>datetime.datetime(2024, 7, 31, 10, 5, 30, 834000)</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">url</td><td style="vertical-align:top;">:</td><td><div>/</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">utcnow</td><td style="vertical-align:top;">:</td><td><div>datetime.datetime(2024, 7, 31, 3, 5, 30, 834000)</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi</td><td style="vertical-align:top;">:</td><td><div>&lt;gluon.main.LazyWSGI object at 0x03E39690&gt;</div></td></tr></table></div>'
+tRp58
+sS'frames'
+p59
+(lp60
+(dp61
+S'file'
+p62
+S'C:\\Users\\F6\\Downloads\\bahadi\\9026-py2\\gluon\\restricted.py'
+p63
+sS'dump'
+p64
+(dp65
+S'environment'
+p66
+S"{'A': <class 'gluon.html.A'>, 'ANY_OF': <class 'gluon.validators.ANY_OF'>, 'ASSIGNJS': <function ASSIGNJS>, 'AppConfig': <function AppConfig>, 'B': <class 'gluon.html.B'>, 'BEAUTIFY': <class 'gluon.html.BEAUTIFY'>, 'BODY': <class 'gluon.html.BODY'>, 'BR': <class 'gluon.html.BR'>, 'BUTTON': <class 'gluon.html.BUTTON'>, 'CAT': <class 'gluon.html.CAT'>, ...}"
+p67
+sS'ccode'
+p68
+S'<code object <module> at 03E293C8, file "C:\\User...9026-py2\\applications\\cms\\models\\db.py", line 12>'
+p69
+ssS'lnum'
+p70
+I227
+sS'lines'
+p71
+(dp72
+I224
+S'            ccode = code'
+p73
+sI225
+S'        else:'
+p74
+sI226
+S'            ccode = compile2(code, layer)'
+p75
+sI227
+S'        exec ccode in environment'
+p76
+sI228
+S'    except HTTP:'
+p77
+sI229
+S'        raise'
+p78
+sI230
+S'    except RestrictedError:'
+p79
+sI231
+S'        # do not encapsulate (obfuscate) the original RestrictedError'
+p80
+sI222
+S'    try:'
+p81
+sI223
+S'        if isinstance(code, types.CodeType):'
+p82
+ssS'call'
+p83
+S'(code=\'# -*- coding: utf-8 -*-\\n\\n#######################...app"\\ndomain_naso ="https://banhang.bahadi.vn/app"\', environment={\'A\': <class \'gluon.html.A\'>, \'ANY_OF\': <class \'gluon.validators.ANY_OF\'>, \'ASSIGNJS\': <function ASSIGNJS>, \'AppConfig\': <function AppConfig>, \'B\': <class \'gluon.html.B\'>, \'BEAUTIFY\': <class \'gluon.html.BEAUTIFY\'>, \'BODY\': <class \'gluon.html.BODY\'>, \'BR\': <class \'gluon.html.BR\'>, \'BUTTON\': <class \'gluon.html.BUTTON\'>, \'CAT\': <class \'gluon.html.CAT\'>, ...}, layer=r\'C:\\Users\\F6\\Downloads\\bahadi\\9026-py2\\applications\\cms\\models\\db.py\')'
+p84
+sS'func'
+p85
+S'restricted'
+p86
+sa(dp87
+g62
+S'C:\\Users\\F6\\Downloads\\bahadi\\9026-py2\\applications\\cms\\models\\db.py'
+p88
+sg64
+(dp89
+S'plugin_cms'
+p90
+S'undefined'
+p91
+sS'Cms'
+p92
+g91
+ssg70
+I44
+sg71
+(dp93
+I39
+S'PortalConfig = AppConfig(reload=True)'
+p94
+sI40
+S"response.formstyle = PortalConfig.take('forms.formstyle')  # or 'bootstrap3_stacked' or 'bootstrap2' or other"
+p95
+sI41
+S"response.form_label_separator = PortalConfig.take('forms.separator')"
+p96
+sI42
+S''
+sI43
+S''
+sI44
+S'from plugin_cms import Cms'
+p97
+sI45
+S'cms = Cms()'
+p98
+sI46
+S'from plugin_portlet import Portlet'
+p99
+sI47
+S'portlet = Portlet(cms=cms)'
+p100
+sI48
+S'portlet.define_portlet()'
+p101
+ssg83
+S'()'
+p102
+sg85
+S'<module>'
+p103
+sa(dp104
+g62
+S'C:\\Users\\F6\\Downloads\\bahadi\\9026-py2\\gluon\\custom_import.py'
+p105
+sg64
+(dp106
+S'fromlist'
+p107
+S"('Cms',)"
+p108
+sS'level'
+p109
+S'-1'
+p110
+sS'base_importer'
+p111
+S'<built-in function __import__>'
+p112
+sS'globals'
+p113
+S"{'A': <class 'gluon.html.A'>, 'ANY_OF': <class 'gluon.validators.ANY_OF'>, 'ASSIGNJS': <function ASSIGNJS>, 'AppConfig': <function AppConfig>, 'B': <class 'gluon.html.B'>, 'BEAUTIFY': <class 'gluon.html.BEAUTIFY'>, 'BODY': <class 'gluon.html.BODY'>, 'BR': <class 'gluon.html.BR'>, 'BUTTON': <class 'gluon.html.BUTTON'>, 'CAT': <class 'gluon.html.CAT'>, ...}"
+p114
+sS'pname'
+p115
+S"'applications.cms.modules.plugin_cms'"
+p116
+sS'locals'
+p117
+S"{'A': <class 'gluon.html.A'>, 'ANY_OF': <class 'gluon.validators.ANY_OF'>, 'ASSIGNJS': <function ASSIGNJS>, 'AppConfig': <function AppConfig>, 'B': <class 'gluon.html.B'>, 'BEAUTIFY': <class 'gluon.html.BEAUTIFY'>, 'BODY': <class 'gluon.html.BODY'>, 'BR': <class 'gluon.html.BR'>, 'BUTTON': <class 'gluon.html.BUTTON'>, 'CAT': <class 'gluon.html.CAT'>, ...}"
+p118
+ssg70
+I95
+sg71
+(dp119
+I96
+S'        except ImportError, e1:'
+p120
+sI97
+S'            import_tb = sys.exc_info()[2]'
+p121
+sI98
+S'            try:'
+p122
+sI99
+S'                return NATIVE_IMPORTER(name, globals, locals, fromlist, level)'
+p123
+sI90
+S'                        modules_prefix += "." + itemname'
+p124
+sI91
+S'                    return result'
+p125
+sI92
+S'                else:'
+p126
+sI93
+S'                    # import like "from x import a, b, ..."'
+p127
+sI94
+S'                    pname = modules_prefix + "." + name'
+p128
+sI95
+S'                    return base_importer(pname, globals, locals, fromlist, level)'
+p129
+ssg83
+S"(name='plugin_cms', globals={'A': <class 'gluon.html.A'>, 'ANY_OF': <class 'gluon.validators.ANY_OF'>, 'ASSIGNJS': <function ASSIGNJS>, 'AppConfig': <function AppConfig>, 'B': <class 'gluon.html.B'>, 'BEAUTIFY': <class 'gluon.html.BEAUTIFY'>, 'BODY': <class 'gluon.html.BODY'>, 'BR': <class 'gluon.html.BR'>, 'BUTTON': <class 'gluon.html.BUTTON'>, 'CAT': <class 'gluon.html.CAT'>, ...}, locals={'A': <class 'gluon.html.A'>, 'ANY_OF': <class 'gluon.validators.ANY_OF'>, 'ASSIGNJS': <function ASSIGNJS>, 'AppConfig': <function AppConfig>, 'B': <class 'gluon.html.B'>, 'BEAUTIFY': <class 'gluon.html.BEAUTIFY'>, 'BODY': <class 'gluon.html.BODY'>, 'BR': <class 'gluon.html.BR'>, 'BUTTON': <class 'gluon.html.BUTTON'>, 'CAT': <class 'gluon.html.CAT'>, ...}, fromlist=('Cms',), level=-1)"
+p130
+sg85
+S'custom_importer'
+p131
+sa(dp132
+g62
+S'C:\\Users\\F6\\Downloads\\bahadi\\9026-py2\\applications\\cms\\modules\\plugin_cms.py'
+p133
+sg64
+(dp134
+S'plugin_portlet'
+p135
+g91
+sS'PortletStyle'
+p136
+g91
+ssg70
+I47
+sg71
+(dp137
+I42
+S'\texcept Exception, e:'
+p138
+sI43
+S'\t\tprint "setting ->", e'
+p139
+sI44
+S'\t\treturn default'
+p140
+sI45
+S''
+sI46
+S''
+sI47
+S'from plugin_portlet import PortletStyle'
+p141
+sI48
+S'def get_style(field,settings):'
+p142
+sI49
+S'\tstyle = ""'
+p143
+sI50
+S'\tfor type in PortletStyle:'
+p144
+sI51
+S'\t\tkey = "%s_%s"%(type[0],field)'
+p145
+ssg83
+S'()'
+p146
+sg85
+g103
+sa(dp147
+g62
+S'C:\\Users\\F6\\Downloads\\bahadi\\9026-py2\\gluon\\custom_import.py'
+p148
+sg64
+(dp149
+S'fromlist'
+p150
+S"('PortletStyle',)"
+p151
+sS'level'
+p152
+S'-1'
+p153
+sS'base_importer'
+p154
+S'<built-in function __import__>'
+p155
+sS'globals'
+p156
+S"{'A': None, 'ANY_OF': None, 'ASSIGNJS': None, 'B': None, 'BEAUTIFY': None, 'BODY': None, 'BR': None, 'BUTTON': None, 'CAT': None, 'CENTER': None, ...}"
+p157
+sS'pname'
+p158
+S"'applications.cms.modules.plugin_portlet'"
+p159
+sS'locals'
+p160
+S"{'A': None, 'ANY_OF': None, 'ASSIGNJS': None, 'B': None, 'BEAUTIFY': None, 'BODY': None, 'BR': None, 'BUTTON': None, 'CAT': None, 'CENTER': None, ...}"
+p161
+ssg70
+I95
+sg71
+(dp162
+I96
+S'        except ImportError, e1:'
+p163
+sI97
+S'            import_tb = sys.exc_info()[2]'
+p164
+sI98
+S'            try:'
+p165
+sI99
+S'                return NATIVE_IMPORTER(name, globals, locals, fromlist, level)'
+p166
+sI90
+S'                        modules_prefix += "." + itemname'
+p167
+sI91
+S'                    return result'
+p168
+sI92
+S'                else:'
+p169
+sI93
+S'                    # import like "from x import a, b, ..."'
+p170
+sI94
+S'                    pname = modules_prefix + "." + name'
+p171
+sI95
+S'                    return base_importer(pname, globals, locals, fromlist, level)'
+p172
+ssg83
+S"(name='plugin_portlet', globals={'A': None, 'ANY_OF': None, 'ASSIGNJS': None, 'B': None, 'BEAUTIFY': None, 'BODY': None, 'BR': None, 'BUTTON': None, 'CAT': None, 'CENTER': None, ...}, locals={'A': None, 'ANY_OF': None, 'ASSIGNJS': None, 'B': None, 'BEAUTIFY': None, 'BODY': None, 'BR': None, 'BUTTON': None, 'CAT': None, 'CENTER': None, ...}, fromlist=('PortletStyle',), level=-1)"
+p173
+sg85
+g131
+sa(dp174
+g62
+S'C:\\Users\\F6\\Downloads\\bahadi\\9026-py2\\applications\\cms\\modules\\plugin_portlet.py'
+p175
+sg64
+(dp176
+S'bs4'
+p177
+g91
+sS'BeautifulSoup'
+p178
+g91
+ssg70
+I12
+sg71
+(dp179
+I7
+S''
+sI8
+S'import os, datetime'
+p180
+sI9
+S'import cStringIO'
+p181
+sI10
+S'import re'
+p182
+sI11
+S'import urllib2'
+p183
+sI12
+S'from bs4 import BeautifulSoup'
+p184
+sI13
+S'from gluon import current, LOAD, redirect'
+p185
+sI14
+S'from gluon.dal import Field'
+p186
+sI15
+S'from html import *'
+p187
+sI16
+S'from validators import IS_IN_DB, IS_IN_SET,IS_NULL_OR'
+p188
+ssg83
+S'()'
+p189
+sg85
+g103
+sa(dp190
+g62
+S'C:\\Users\\F6\\Downloads\\bahadi\\9026-py2\\gluon\\custom_import.py'
+p191
+sg64
+(dp192
+S'fromlist'
+p193
+S"('BeautifulSoup',)"
+p194
+sS'level'
+p195
+S'-1'
+p196
+sS'base_importer'
+p197
+S'<built-in function __import__>'
+p198
+sS'globals'
+p199
+S"{'__builtins__': {'ArithmeticError': <type 'exceptions.ArithmeticError'>, 'AssertionError': <type 'exceptions.AssertionError'>, 'AttributeError': <type 'exceptions.AttributeError'>, 'BaseException': <type 'exceptions.BaseException'>, 'BufferError': <type 'exceptions.BufferError'>, 'BytesWarning': <type 'exceptions.BytesWarning'>, 'DeprecationWarning': <type 'exceptions.DeprecationWarning'>, 'EOFError': <type 'exceptions.EOFError'>, 'Ellipsis': Ellipsis, 'EnvironmentError': <type 'exceptions.EnvironmentError'>, ...}, '__doc__': None, '__file__': None, '__name__': None, '__package__': None, 'cStringIO': None, 'datetime': None, 'os': None, 're': None, 'urllib2': None}"
+p200
+sS'pname'
+p201
+S"'applications.cms.modules.bs4'"
+p202
+sS'locals'
+p203
+S"{'__builtins__': {'ArithmeticError': <type 'exceptions.ArithmeticError'>, 'AssertionError': <type 'exceptions.AssertionError'>, 'AttributeError': <type 'exceptions.AttributeError'>, 'BaseException': <type 'exceptions.BaseException'>, 'BufferError': <type 'exceptions.BufferError'>, 'BytesWarning': <type 'exceptions.BytesWarning'>, 'DeprecationWarning': <type 'exceptions.DeprecationWarning'>, 'EOFError': <type 'exceptions.EOFError'>, 'Ellipsis': Ellipsis, 'EnvironmentError': <type 'exceptions.EnvironmentError'>, ...}, '__doc__': None, '__file__': None, '__name__': None, '__package__': None, 'cStringIO': None, 'datetime': None, 'os': None, 're': None, 'urllib2': None}"
+p204
+ssg70
+I95
+sg71
+(dp205
+I96
+S'        except ImportError, e1:'
+p206
+sI97
+S'            import_tb = sys.exc_info()[2]'
+p207
+sI98
+S'            try:'
+p208
+sI99
+S'                return NATIVE_IMPORTER(name, globals, locals, fromlist, level)'
+p209
+sI90
+S'                        modules_prefix += "." + itemname'
+p210
+sI91
+S'                    return result'
+p211
+sI92
+S'                else:'
+p212
+sI93
+S'                    # import like "from x import a, b, ..."'
+p213
+sI94
+S'                    pname = modules_prefix + "." + name'
+p214
+sI95
+S'                    return base_importer(pname, globals, locals, fromlist, level)'
+p215
+ssg83
+S"(name='bs4', globals={'__builtins__': {'ArithmeticError': <type 'exceptions.ArithmeticError'>, 'AssertionError': <type 'exceptions.AssertionError'>, 'AttributeError': <type 'exceptions.AttributeError'>, 'BaseException': <type 'exceptions.BaseException'>, 'BufferError': <type 'exceptions.BufferError'>, 'BytesWarning': <type 'exceptions.BytesWarning'>, 'DeprecationWarning': <type 'exceptions.DeprecationWarning'>, 'EOFError': <type 'exceptions.EOFError'>, 'Ellipsis': Ellipsis, 'EnvironmentError': <type 'exceptions.EnvironmentError'>, ...}, '__doc__': None, '__file__': None, '__name__': None, '__package__': None, 'cStringIO': None, 'datetime': None, 'os': None, 're': None, 'urllib2': None}, locals={'__builtins__': {'ArithmeticError': <type 'exceptions.ArithmeticError'>, 'AssertionError': <type 'exceptions.AssertionError'>, 'AttributeError': <type 'exceptions.AttributeError'>, 'BaseException': <type 'exceptions.BaseException'>, 'BufferError': <type 'exceptions.BufferError'>, 'BytesWarning': <type 'exceptions.BytesWarning'>, 'DeprecationWarning': <type 'exceptions.DeprecationWarning'>, 'EOFError': <type 'exceptions.EOFError'>, 'Ellipsis': Ellipsis, 'EnvironmentError': <type 'exceptions.EnvironmentError'>, ...}, '__doc__': None, '__file__': None, '__name__': None, '__package__': None, 'cStringIO': None, 'datetime': None, 'os': None, 're': None, 'urllib2': None}, fromlist=('BeautifulSoup',), level=-1)"
+p216
+sg85
+g131
+sasS'pyver'
+p217
+S'Python 2.7.18: C:\\Python27\\python.exe (prefix: C:\\Python27)'
+p218
+sS'session'
+p219
+g57
+(S's\x1a\x00\x00\x00<div><table></table></div>'
+tRp220
+sS'etype'
+p221
+S"<type 'exceptions.ImportError'>"
+p222
+sS'date'
+p223
+S'Wed Jul 31 10:05:32 2024'
+p224
+sS'response'
+p225
+g57
+(S's\'\x16\x00\x00<div><table><tr><td style="font-weight:bold;vertical-align:top;">body</td><td style="vertical-align:top;">:</td><td><div>&lt;cStringIO.StringO object at 0x03E39060&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cookies</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">session_id_cms</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1-964be405-e0f6-44e2-9e1d-11c6ff0c4d0d<table><tr><td style="font-weight:bold;vertical-align:top;">comment</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">domain</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">expires</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">httponly</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">max-age</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">path</td><td style="vertical-align:top;">:</td><td><div>/</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">secure</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">version</td><td style="vertical-align:top;">:</td><td><div></div></td></tr></table></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">delimiters</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>{{</div></td></tr><tr><td><div>}}</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">files</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">flash</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">form_label_separator</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">formstyle</td><td style="vertical-align:top;">:</td><td><div>bootstrap3_inline</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">generic_patterns</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>*</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">headers</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">X-Powered-By</td><td style="vertical-align:top;">:</td><td><div>web2py</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">menu</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">meta</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">models_to_run</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>^\\w+\\.py$</div></td></tr><tr><td><div>^portal/\\w+\\.py$</div></td></tr><tr><td><div>^portal/folder/\\w+\\.py$</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">postprocessing</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_client</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_cookie_compression_level</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_cookie_expires</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_data_name</td><td style="vertical-align:top;">:</td><td><div>session_data_cms</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_file</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_filename</td><td style="vertical-align:top;">:</td><td><div>C:\\Users\\F6\\Downloads\\bahadi\\9026-py2\\applications\\cms\\sessions\\127.0.0.1-964be405-e0f6-44e2-9e1d-11c6ff0c4d0d</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_hash</td><td style="vertical-align:top;">:</td><td><div>c0762cbf4baf7f9af97c051e7fcb8083</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_id</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1-964be405-e0f6-44e2-9e1d-11c6ff0c4d0d</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_id_name</td><td style="vertical-align:top;">:</td><td><div>session_id_cms</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_masterapp</td><td style="vertical-align:top;">:</td><td><div>cms</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_new</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_storage_type</td><td style="vertical-align:top;">:</td><td><div>file</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">status</td><td style="vertical-align:top;">:</td><td><div>200</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">view</td><td style="vertical-align:top;">:</td><td><div>portal/folder.html</div></td></tr></table></div>'
+tRp226
+sS'locals'
+p227
+(dp228
+S'fromlist'
+p229
+S"('BeautifulSoup',)"
+p230
+sS'modules_prefix'
+p231
+S"'applications.cms.modules'"
+p232
+sS'name'
+p233
+S"'bs4'"
+p234
+sS'level'
+p235
+S'-1'
+p236
+sS'items'
+p237
+S"['C:', 'Users', 'F6', 'Downloads', 'bahadi', '9026-py2', 'applications', 'cms']"
+p238
+sS'base_importer'
+p239
+S'<built-in function __import__>'
+p240
+sS'globals'
+p241
+S"{'__builtins__': {'ArithmeticError': <type 'exceptions.ArithmeticError'>, 'AssertionError': <type 'exceptions.AssertionError'>, 'AttributeError': <type 'exceptions.AttributeError'>, 'BaseException': <type 'exceptions.BaseException'>, 'BufferError': <type 'exceptions.BufferError'>, 'BytesWarning': <type 'exceptions.BytesWarning'>, 'DeprecationWarning': <type 'exceptions.DeprecationWarning'>, 'EOFError': <type 'exceptions.EOFError'>, 'Ellipsis': Ellipsis, 'EnvironmentError': <type 'exceptions.EnvironmentError'>, ...}, '__doc__': None, '__file__': None, '__name__': None, '__package__': None, 'cStringIO': None, 'datetime': None, 'os': None, 're': None, 'urllib2': None}"
+p242
+sS'pname'
+p243
+S"'applications.cms.modules.bs4'"
+p244
+sS'e3'
+p245
+S"ImportError('No module named bs4',)"
+p246
+sS'e1'
+p247
+S"ImportError('No module named bs4',)"
+p248
+sS'import_tb'
+p249
+S'None'
+p250
+sg227
+S"{'__builtins__': {'ArithmeticError': <type 'exceptions.ArithmeticError'>, 'AssertionError': <type 'exceptions.AssertionError'>, 'AttributeError': <type 'exceptions.AttributeError'>, 'BaseException': <type 'exceptions.BaseException'>, 'BufferError': <type 'exceptions.BufferError'>, 'BytesWarning': <type 'exceptions.BytesWarning'>, 'DeprecationWarning': <type 'exceptions.DeprecationWarning'>, 'EOFError': <type 'exceptions.EOFError'>, 'Ellipsis': Ellipsis, 'EnvironmentError': <type 'exceptions.EnvironmentError'>, ...}, '__doc__': None, '__file__': None, '__name__': None, '__package__': None, 'cStringIO': None, 'datetime': None, 'os': None, 're': None, 'urllib2': None}"
+p251
+sS'oname'
+p252
+S"'bs4'"
+p253
+sssS'traceback'
+p254
+S'Traceback (most recent call last):\n  File "C:\\Users\\F6\\Downloads\\bahadi\\9026-py2\\gluon\\restricted.py", line 227, in restricted\n    exec ccode in environment\n  File "C:\\Users\\F6\\Downloads\\bahadi\\9026-py2\\applications\\cms\\models\\db.py", line 44, in <module>\n    from plugin_cms import Cms\n  File "C:\\Users\\F6\\Downloads\\bahadi\\9026-py2\\gluon\\custom_import.py", line 95, in custom_importer\n    return base_importer(pname, globals, locals, fromlist, level)\n  File "applications\\cms\\modules\\plugin_cms.py", line 47, in <module>\n    from plugin_portlet import PortletStyle\n  File "C:\\Users\\F6\\Downloads\\bahadi\\9026-py2\\gluon\\custom_import.py", line 95, in custom_importer\n    return base_importer(pname, globals, locals, fromlist, level)\n  File "applications\\cms\\modules\\plugin_portlet.py", line 12, in <module>\n    from bs4 import BeautifulSoup\n  File "C:\\Users\\F6\\Downloads\\bahadi\\9026-py2\\gluon\\custom_import.py", line 95, in custom_importer\n    return base_importer(pname, globals, locals, fromlist, level)\nImportError: No module named bs4\n'
+p255
+s.

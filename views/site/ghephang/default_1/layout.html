@@ -1,0 +1,83 @@
+{{extend 'site/ghephang/default/layouts.html'}}
+
+<div class="btContentHolder" style="padding-top: 90px;">
+    <div class="btContent">
+        <div class="bt_rc_container">
+            {{from plugin_cms import CmsFolder}}
+            {{avatar,avatar_bg = CmsFolder().folder_avatar(request.args(0))}}
+            {{if avatar_bg !="":}}
+                <section data-parallax="0.1" data-parallax-offset="0"
+                     class="boldSection topSpaced bottomSpaced btDarkSkin gutter btMiddleVertical btParallax wBackground cover anh_rieng"
+                     style="background-image: url({{=URL('static','/site/ghephang/uploads/avatar_bg/%s')%(avatar_bg)}}; background-position: 50% 9.009px;">
+            {{else:}}
+                <section data-parallax="0.1" data-parallax-offset="0"
+                     class="boldSection topSpaced bottomSpaced btDarkSkin gutter btMiddleVertical btParallax wBackground cover"
+                     style='background-image: url({{=URL("static","%s/images")%(static_default)}}/transport-dimmed.jpg); background-position: 50% 9.009px;'>
+            {{pass}}
+
+        
+            
+                <div class="port">
+                    <div class="boldCell">
+                        <div class="boldCellInner">
+                            <div class="boldRow ">
+                                <div class="rowItem col-md-12 col-ms-12  btTextLeft animate animate-fadein animate-moveleft inherit">
+                                    <div class="rowItemContent">
+                                        <div class="btClear btSeparator topSmallSpaced noBorder">
+                                            <hr>
+                                        </div>
+                                        <header class="header btClear extralarge btDash topDash  btAccentDash btRegularTitle"
+                                                style="max-width:800px;"><p class="btSuperTitle">
+                                                     {{=CmsFolder().folder_des(request.args(0))}}
+                                             </p>
+                                            <div class="dash"><h1><span class="headline"> {{=CmsFolder().folder_name(request.args(0))}}</span></h1></div>
+                                        </header>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="bt_section63b6d7de54c69" class="boldSection topSpaced bottomSpaced gutter inherit">
+                <div class="port">
+                    <div class="boldCell">
+                        <div class="boldCellInner">
+                            <div class="boldRow ">
+                                <div class="col-ms-9">
+                                    <article class="btArticle gutter divider post-932 post type-post status-publish format-image has-post-thumbnail hentry category-trucking tag-air-cargo tag-courier tag-ocean-cargo post_format-post-format-image">
+                                        {{include}}
+                                    </article>
+                                </div>
+                                
+                                <aside class="col-ms-3">
+                                    <div class="btBox widget_search">
+                                        <div class="btSearch">
+                                            <div class="btIco default extrasmall"><a href="#" data-ico-fa="" class="btIcoHolder"></a></div>
+                                <div class="btSearch">
+                                    <div class="btSearchInner" role="search">
+                                            <div class="btSearchInnerContent">
+                                                    <form action="https://cargo.bold-themes.com/delivery-express/" method="get"><input type="text" name="s" placeholder="Looking for..." class="untouched">
+                                                    <button type="submit" data-icon=""></button>
+                                                    </form>
+                                                    <div class="btSearchInnerClose"><div class="btIco borderless small"><a href="#" data-ico-fa="" class="btIcoHolder"></a></div></div>
+                                            </div>
+                                    </div>
+                                </div>
+                                
+                                </div></div>
+                                
+                                <div class="btBox widget_categories"><h4><span>Danh mục</span></h4>
+                                    {{=portlet.display(169)}} 
+                                </div>
+                                </aside>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div><!-- /bt_content -->
+
+</div>
+   

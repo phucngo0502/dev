@@ -1,0 +1,8 @@
+{{extend 'plugin_tools/layout.html'}}
+<h2>{{=T('Select one file excel type')}}</h2> 
+<br>
+{{=FORM(TABLE(TR(TD(T('Insert reference?')),TD(INPUT(_type='checkbox',_name='reference_insert'))),
+			  TR(TD('User value default?'),TD(INPUT(_type='checkbox',_name='reference_default'))),
+			  TR(TD(T('File')),TD(INPUT(_type='file',_name='filename'))),
+			  TR(TD(),TD(INPUT(_type='submit', _value='submit')))))}} 
+<br>

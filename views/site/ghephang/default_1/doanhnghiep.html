@@ -1,0 +1,389 @@
+{{extend 'site/ghephang/default/layouts.html'}}
+
+<div class="btContentHolder" style="padding-top: 90px;">
+    <div class="btContent">
+        <div class="bt_rc_container">
+            {{from plugin_cms import CmsFolder}}
+            {{avatar,avatar_bg = CmsFolder().folder_avatar(request.args(0))}}
+             {{if avatar_bg !="":}}
+                <section data-parallax="0.1" data-parallax-offset="0"
+                     class="boldSection topSpaced bottomSpaced btDarkSkin gutter btMiddleVertical btParallax wBackground cover anh_rieng"
+                     style="background-image: url({{=URL('static','/site/ghephang/uploads/avatar_bg/%s')%(avatar_bg)}}); background-position: 50% 9.009px;">
+            {{else:}}
+                <section data-parallax="0.1" data-parallax-offset="0"
+                     class="boldSection topSpaced bottomSpaced btDarkSkin gutter btMiddleVertical btParallax wBackground cover"
+                     style='background-image: url({{=URL("static","%s/images")%(static_default)}}/transport-dimmed.jpg); background-position: 50% 9.009px;'>
+            {{pass}}
+            
+                <div class="port">
+                    <div class="boldCell">
+                        <div class="boldCellInner">
+                            <div class="boldRow ">
+                                <div class="rowItem col-md-12 col-ms-12  btTextLeft animate animate-fadein animate-moveleft inherit">
+                                    <div class="rowItemContent">
+                                        <div class="btClear btSeparator topSmallSpaced noBorder">
+                                            <hr>
+                                        </div>
+                                        <header class="header btClear extralarge btDash topDash  btAccentDash btRegularTitle"
+                                                style="max-width:800px;"><p class="btSuperTitle">
+                                                     {{=CmsFolder().folder_des(request.args(0))}}
+                                             </p>
+                                            <div class="dash"><h1><span class="headline"> {{=CmsFolder().folder_name(request.args(0))}}</span></h1></div>
+                                        </header>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            
+            <section   class="boldSection btDivider topSpaced bottomSemiSpaced gutter inherit">
+                <div class="port">
+                    <div class="boldCell">
+                        <div class="boldCellInner">
+                            <div class="boldRow ">
+                                <div class="header large ">      
+                                    <p class="btSuperTitle">Đối tác giao hàng đáng tin cậy của bạn</p>
+                                    <div class="dash"><h2><span class="headline">Ghép hàng sẽ giúp bạn tối ưu chi phí và tăng trưởng kinh doanh.</span></h2></div>
+                                </div>
+                                
+                                <div class="rowItem col-sm-5 col-ms-12 btTextCenter animate-fadein animate-moveleft inherit animated">
+                                    <div class="rowItemContent">
+                                        <div class="bpgPhoto btTextCenter out-bottom">
+                                            <div class="btImage">
+                                                <br/>
+                                                <img src="https://www.lalamove.com/hubfs/shutterstock_713439202_retouch.jpg" alt="shutterstock_202675450-320x214.jpg"></div><br />
+                                        </div>
+                                       
+                                    </div>
+                                </div>
+                                
+                                <div class="rowItem col-md-7 col-ms-12 btTextLeft animate-fadein animate-moveright inherit animated">
+                                   
+                                    <div class="rowItemContent">
+                                        <div class="servicesItem  largeIcon borderlessIconType ">
+                                            <div class="sIcon">
+                                                <div class="btIco large borderless"><span data-ico-cs=""
+                                                                                          class="btIcoHolder"></span></div>
+                                            </div>
+                                            <div class="sTxt">
+                                                <header class="header btClear extrasmall">
+                                                    <div class="dash"><h4><span class="headline">Giảm chi phí hoạt động</span></h4></div>
+                                                </header>
+                                                <p>Không cần đầu tư thiết lập đội ngũ giao hàng của riêng bạn. Bạn có thể tiết kiệm rất nhiều khi thuê ngoài và chỉ thanh toán cho hoạt động giao hàng bất cứ khi nào bạn cần. </p></div>
+                                        </div>
+                                         
+                                        <div class="servicesItem  largeIcon borderlessIconType ">
+                                            <div class="sIcon">
+                                                <div class="btIco large borderless"><span data-ico-cs=""
+                                                                                          class="btIcoHolder"></span></div>
+                                            </div>
+                                            <div class="sTxt">
+                                                <header class="header btClear extrasmall">
+                                                    <div class="dash"><h4><span class="headline">Giao hàng nhanh chóng và linh hoạt</span></h4></div>
+                                                </header>
+                                                <p>Giao nhanh siêu tốc, giao trong ngày hoặc chủ động lên lịch trước. Chúng tôi luôn sẵn sàng bất cứ khi nào bạn cần và luôn cam kết chất lượng phục vụ tốt nhất. </p></div>
+                                        </div>
+                                        
+                                        <div class="servicesItem  largeIcon borderlessIconType ">
+                                            <div class="sIcon">
+                                                <div class="btIco large borderless"><span data-ico-cs=""
+                                                                                          class="btIcoHolder"></span></div>
+                                            </div>
+                                            <div class="sTxt">
+                                                <header class="header btClear extrasmall">
+                                                    <div class="dash"><h4><span class="headline">Hoàn toàn an tâm</span></h4>
+                                                    </div>
+                                                </header>
+                                                <p>Đối tác tài xế được đào tạo bài bản và chuyên nghiệp. Bạn dễ dàng theo dõi đơn hàng và luôn được hỗ trợ quản lý cũng như xử lý nếu có phát sinh. Chúng tôi đang đồng hành cùng hàng ngàn doanh nghiệp để thực hiện dịch vụ giao hàng siêu tốc mỗi ngày. </p></div>
+                                        </div>
+                                       
+                                    </div>
+                                </div>
+                               
+                            </div>
+                            <div class="boldRow ">
+                                <div class="rowItem col-md-12 col-ms-12 btTextCenter animate-fadein animate-moveright inherit animated">
+                                    <div class="rowItemContent">
+                                        <div class="btClear btSeparator bottomSmallSpaced noBorder">
+                                            <hr>
+                                        </div>
+                                        <div class="bpgPhoto btTextCenter">
+                                            <div class="btImage"><img
+                                                    src="https://cargo.bold-themes.com/delivery-express/wp-content/uploads/sites/3/2015/09/truck-vignette-gray.png"
+                                                    alt="truck-vignette-gray.png"></div>
+                                        </div>
+                                        <div class="btClear btSeparator bottomSemiSpaced noBorder">
+                                            <hr>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="boldRow ">
+                                <div class="header large btTextCenter  ">      
+                                    <div class="dash"><h3><span class="headline">Bạn hoàn toàn có thể tin tưởng vào chúng tôi</span></h3></div>
+                                </div>
+                                
+                                <div class="rowItem col-sm-4 col-ms-12 btTextCenter animate-fadein animate-moveright inherit btDoublePadding animated">
+                                    <div class="rowItemContent">
+                                        <div class="btIconImageRow">
+                                            <div class="btIco borderless large"><span data-ico-cs="" class="btIcoHolder"></span>
+                                            </div>
+                                        </div>
+                                        <header class="header btClear large  btAlternateDash btAlternateTitle"><h3>12.000</h3></header>
+                                        <div class="btText">
+                                            <div class="servicesItem mediumIcon ">
+                                                <div class="btTextCenter">
+                                                     Đối tác tài xế hoạt động thường xuyên. 
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="btClear btSeparator bottomSemiSpaced noBorder">
+                                            <hr>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="rowItem col-sm-4 col-ms-12 btTextCenter animate-fadein inherit btDoublePadding animated">
+                                    <div class="rowItemContent">
+                                        <div class="btIconImageRow">
+                                            <div class="btIco borderless large"><span data-ico-cs="" class="btIcoHolder"></span>
+                                            </div>
+                                        </div>
+                                        <header class="header btClear large  btAlternateDash btAlternateTitle"><h3>2.000</h3></header>
+                                        <div class="btText">
+                                            <div class="servicesItem mediumIcon ">
+                                                <div class="btTextCenter">
+                                                    Đối tác doanh nghiệp và hộ kinh doanh cá thể. 
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="btClear btSeparator bottomSemiSpaced noBorder">
+                                            <hr>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="rowItem col-sm-4 col-ms-12 btTextCenter animate-fadein animate-moveleft inherit btDoublePadding animated">
+                                    <div class="rowItemContent">
+                                        <div class="btIconImageRow">
+                                            <div class="btIco borderless large"><span data-ico-cs="" class="btIcoHolder"></span>
+                                            </div>
+                                        </div>
+                                        <header class="header btClear large  btAlternateDash btAlternateTitle"><h3>800.000</h3></header>
+                                        <div class="btText">
+                                            <div class="servicesItem mediumIcon ">
+                                                <div class="btTextCenter">
+                                                    Đơn giao hàng mỗi tháng cùng . 
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="btClear btSeparator bottomSemiSpaced noBorder">
+                                            <hr>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+             
+             <section id="elements" data-parallax="0" data-parallax-offset="0"
+         class="boldSection topSpaced bottomSpaced btDarkSkin gutter inherit btParallax wBackground cover"
+         style='background-image:url({{=URL("static","%s/images")%(static_default)}}/parallax-img-new-1.jpg);'>
+            <div class="port">
+                <div class="boldCell">
+                    <div class="boldCellInner">
+                        <div class="boldRow ">
+                            <div class="rowItem col-sm-6 col-ms-12 btTextLeft animate-fadein inherit animated">
+                                <div class="rowItemContent">
+                                    <header class="header btClear large  btAccentDash btRegularTitle"><p class="btSuperTitle">
+                                        Peace of Mind</p>
+                                        <div class="dash"><h2><span class="headline">OUR EXPERTISE</span></h2></div>
+                                    </header>
+                                    <div class="btClear btSeparator topSmallSpaced noBorder">
+                                        <hr>
+                                    </div>
+                                    <div class="btText">
+                                        <blockquote><p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+                                            dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
+                                        </blockquote>
+                                        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                                            fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
+                                            qui.&nbsp;Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+                                            dolore eu fugiat nulla pariatur.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="rowItem col-sm-6 col-ms-12 btTextLeft inherit btNoPadding">
+                                <div class="rowItemContent">
+                                    <div class="btText">
+                                        <p>
+                                            <iframe width="1200" height="675"
+                                                    src="https://www.youtube.com/embed/s73V060rEHI?feature=oembed"
+                                                    frameborder="0" allowfullscreen=""
+                                                    style="width: 100%; height: 331.875px;"></iframe>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+            
+            <!-- Những tiện ích dành  cho khách hàng kinh doanh -->
+        <section  class="boldSection topSpaced bottomSemiSpaced gutter inherit">
+            <div class="port">
+                <div class="boldCell">
+                    <div class="boldCellInner">
+                        <div class="boldRow ">
+                            <div class="header large btTextCenter  ">      
+                                    <div class="dash"><h2><span class="headline">Những tiện ích dành cho khách hàng kinh doanh</span></h2><br/></div>
+                            </div>
+                        
+                            <div class="rowItem col-sm-6 col-ms-12 btTextLeft animate-fadein animate-moveright inherit animated">
+                                <div class="rowItemContent">
+                                    <div class="servicesItem  largeIcon borderlessIconType ">
+                                        <div class="sIcon">
+                                            <div class="btIco large borderless"><span data-ico-cs=""
+                                                                                      class="btIcoHolder"></span></div>
+                                        </div>
+                                        <div class="sTxt">
+                                            <header class="header btClear extrasmall">
+                                                <div class="dash"><h4><span class="headline">Giao nhiều điểm với 1 lần đặt</span></h4></div>
+                                            </header>
+                                            <p>Chọn tối đa 20 điểm trả hàng trong một lần đặt giao, giúp bạn tiết kiệm thời gian và chi phí giao hàng.<br></p></div>
+                                    </div>
+                                    <div class="btClear btSeparator bottomSemiSpaced noBorder">
+                                        <hr>
+                                    </div>
+                                    <div class="servicesItem  largeIcon borderlessIconType ">
+                                        <div class="sIcon">
+                                            <div class="btIco large borderless"><span data-ico-cs=""
+                                                                                      class="btIcoHolder"></span></div>
+                                        </div>
+                                        <div class="sTxt">
+                                            <header class="header btClear extrasmall">
+                                                <div class="dash"><h4><span class="headline">Tài khoản doanh nghiệp</span></h4></div>
+                                            </header>
+                                            <p>Tài khoản doanh nghiệp với nhiều người dùng thành viên sẽ giúp để quản lý đơn hàng, theo dõi thông tin dễ dàng và đầy đủ..<br></p></div>
+                                    </div>
+                                    <div class="btClear btSeparator bottomSemiSpaced noBorder">
+                                        <hr>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="rowItem col-sm-6 col-ms-12 btTextLeft animate-fadein animate-moveright inherit animated">
+                                <div class="rowItemContent">
+                                    <div class="servicesItem  largeIcon borderlessIconType ">
+                                        <div class="sIcon">
+                                            <div class="btIco large borderless"><span data-ico-cs=""
+                                                                                      class="btIcoHolder"></span></div>
+                                        </div>
+                                        <div class="sTxt">
+                                            <header class="header btClear extrasmall">
+                                                <div class="dash"><h4><span class="headline">Quản lý tài khoản</span></h4></div>
+                                            </header>
+                                            <p>Chúng tôi có nhân sự riêng để tận tâm hỗ trợ và xử lý mọi phát sinh của tài khoản doanh nghiệp..<br></p></div>
+                                    </div>
+                                    <div class="btClear btSeparator bottomSemiSpaced noBorder">
+                                        <hr>
+                                    </div>
+                                    <div class="servicesItem  largeIcon borderlessIconType ">
+                                        <div class="sIcon">
+                                            <div class="btIco large borderless"><span data-ico-cs=""
+                                                                                      class="btIcoHolder"></span></div>
+                                        </div>
+                                        <div class="sTxt">
+                                            <header class="header btClear extrasmall">
+                                                <div class="dash"><h4><span class="headline">Theo dõi theo thời gian thực</span></h4>
+                                                </div>
+                                            </header>
+                                            <p> Dịch vụ giao hàng kém dẫn đến việc gửi hàng lộn xộn, khách hàng bất mãn, bưu kiện thất lạc ...<br></p></div>
+                                    </div>
+                                    <div class="btClear btSeparator bottomSemiSpaced noBorder">
+                                        <hr>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section  class="boldSection topSpaced bottomSpaced gutter inherit">
+            <div class="port">
+                <div class="rowItemContent boldRow">
+                    <header class="header btClear medium  btDarkAlternateDash btAccentTitle"><p class="btSuperTitle">Sed pellentesque
+                        malesuada viverra</p>
+                        <div class="dash"><h3><span class="headline">Câu hỏi thường gặp</span></h3></div>
+                    </header>
+                    <div class="btClear btSeparator topSmallSpaced noBorder">
+                        <hr>
+                    </div>
+                    
+                    <div class="rowItem col-md-4 col-ms-12 btTextLeft animate-fadein animate-moveright inherit animated">
+                        <img  src="https://www.lalamove.com/hubfs/Lalamove%20Website%202020/img_FAQ%20(1).png">
+                    </div>
+                    <div class="rowItem col-md-8 col-ms-12 btTextLeft animate-fadein animate-moveright inherit animated">
+                        <div class="btTabs tabsVertical" data-open-first="">
+                            <ul class="tabsHeader">
+                                <li><span>How do we work?</span></li>
+                                <li><span>What services do we offer?</span></li>
+                                <li><span>What kind of vehicles do we have?</span></li>
+                                <li><span>How reliable are we?</span></li>
+                                <li><span>How do we commit to you?</span></li>
+                            </ul>
+                            <div class="tabPanes accordionPanes">
+                                <div class="tabPane">
+                                    <div class="tabAccordionTitle"><span>How do we work?</span></div>
+                                    <div class="tabAccordionContent" style="display: none;"><p>Lorem ipsum dolor sit amet, consectetur
+                                        adipiscing elit. Cras pellentesque massa et metus mattis, a auctor est tincidunt. Morbi tincidunt
+                                        dolor a tincidunt auctor. Vestibulum a metus vitae eros hendrerit sodales nec in sem. Vestibulum in
+                                        libero mauris. Sed finibus, sapien vitae ornare iaculis, enim nunc viverra justo, nec volutpat leo
+                                        erat et magna. Integer tempor nisi et est aliquet, eget ullamcorper ante placerat. In ultricies
+                                        lobortis tortor, viverra feugiat erat viverra ac. Quisque tristique augue vitae vulputate molestie.
+                                        Pellentesque at cursus libero. Donec non varius ligula, id gravida velit. Sed id scelerisque nulla.
+                                        Mauris ac tempus tellus. Quisque mattis nec sem a pulvinar. Aliquam malesuada, eros vel dignissim
+                                        dictum, lacus ante vestibulum elit, eget dictum lectus urna pretium ligula. Praesent tristique
+                                        vestibulum lorem vitae commodo. Integer molestie dapibus lacus, in tempor dui elementum id.</p>
+                                        <p>Nulla ut velit neque. Praesent massa orci, molestie ut posuere a, tincidunt nec dui. Quisque
+                                            feugiat sem sed orci sagittis, id dictum eros sodales. Nullam ac ante elit. Vivamus et nisl
+                                            augue. Aenean vitae justo nulla. Nam auctor dui vel purus iaculis consequat. Morbi quis finibus
+                                            magna, quis malesuada diam.</p>
+                                    </div>
+                                </div>
+
+                                <div class="tabPane">
+                                    <div class="tabAccordionTitle"><span>How do we work?</span></div>
+                                    <div class="tabAccordionContent" style="display: none;"><p>Lorem ipsum dolor sit amet, consectetur
+                                        adipiscing elit. Cras pellentesque massa et metus mattis, a auctor est tincidunt. Morbi tincidunt
+                                        dolor a tincidunt auctor. Vestibulum a metus vitae eros hendrerit sodales nec in sem. Vestibulum in
+                                        libero mauris. Sed finibus, sapien vitae ornare iaculis, enim nunc viverra justo, nec volutpat leo
+                                        erat et magna. Integer tempor nisi et est aliquet, eget ullamcorper ante placerat. In ultricies
+                                        lobortis tortor, viverra feugiat erat viverra ac. Quisque tristique augue vitae vulputate molestie.
+                                        Pellentesque at cursus libero. Donec non varius ligula, id gravida velit. Sed id scelerisque nulla.
+                                        Mauris ac tempus tellus. Quisque mattis nec sem a pulvinar. Aliquam malesuada, eros vel dignissim
+                                        dictum, lacus ante vestibulum elit, eget dictum lectus urna pretium ligula. Praesent tristique
+                                        vestibulum lorem vitae commodo. Integer molestie dapibus lacus, in tempor dui elementum id.</p>
+                                        <p>Nulla ut velit neque. Praesent massa orci, molestie ut posuere a, tincidunt nec dui. Quisque
+                                            feugiat sem sed orci sagittis, id dictum eros sodales. Nullam ac ante elit. Vivamus et nisl
+                                            augue. Aenean vitae justo nulla. Nam auctor dui vel purus iaculis consequat. Morbi quis finibus
+                                            magna, quis malesuada diam.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        </div>
+    </div><!-- /bt_content -->
+
+</div>
+   

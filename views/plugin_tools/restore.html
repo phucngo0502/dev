@@ -1,0 +1,12 @@
+{{extend 'plugin_tools/layout.html'}}
+<div class='frame'> 
+<h2>{{=T('Select File')}}</h2> <BR>
+{{=FORM(TABLE(TR(TD(INPUT(_type='file',_name='filename'))),TR(TD(INPUT(_type='checkbox',_name='truncate'),'Truncate?')),TR(TD(INPUT(_type='submit', _value='submit')))))}} 
+</div>
+<BR>
+{{if table <> {}: }}
+	<H2><B>{{=T('Table updated')}}</B></H2><Br>
+	{{for t in table.keys():}}
+		{{=B(t)}} : {{=B(table[t])}} {{=T('records')}} <BR>
+	{{pass}}
+{{pass}}

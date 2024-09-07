@@ -1,0 +1,24 @@
+{{extend 'layout.html'}}
+<div class="row">
+
+<aside class="main-sidebar">
+			<!-- sidebar: style can be found in sidebar.less -->
+			<section class="sidebar">
+			  <!-- Sidebar user panel -->
+				<div class="user-panel">
+					<div class="pull-center">
+						<img style='width:80%;' src="{{=URL(r=request,c='static',f='images/nasologo.png')}}" alt="Công ty cổ phần công nghệ Naso">
+					</div>
+				</div>
+                {{include 'plugin_process/menu_procedures.html'}}
+			</section>
+			<!-- /.sidebar -->
+		</aside>
+	 
+	<div class="content-wrapper">
+		{{ from plugin_process import ProcessCms
+			=ProcessCms().menu_breadcrumb()
+		}}
+		{{=content}}
+    </div>
+</div>

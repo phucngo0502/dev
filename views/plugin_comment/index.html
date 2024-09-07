@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Canvas Paint - Example 5</title>
+<style type="text/css"><!--
+  #container { position: relative; }
+  #imageView { border: 1px solid #000; }
+  #imageTemp { position: absolute; top: 1px; left: 1px; }
+--></style>
+</head>
+<body>
+  
+  
+<p><label>Drawing tool: <select id="dtool">
+	<option value="pencil" selected>Pencil</option>
+	<option value="line">Line</option>
+	<option value="rect">Rectangle</option>
+</select></label></p>
+<input id="addnewsubmit" value="Save" type="button"></input>
+
+<script type="text/javascript" src="{{=URL(r=request,c='static',f='js/jquery.js')}}"></script>
+	
+<script type="text/javascript">
+$(document).ready(function() {
+	$('#addnewsubmit').click(function () {
+		var url = '/app/plugin_canvas/update/{{=request.args(0)}}';
+		var data = document.getElementById('imageView').toDataURL("image/png");
+		//window.open(data);
+		$.ajax({
+			url: url,
+			type: "GET",
+			data: {'data':data},
+			success: function (html) {
+				$('#results').html(html);
+			}
+		});		
+	});
+});
+</script>
+
+{{#=content.pages()}}	
+
+<div id="container">
+  <img src = "{{#=content}}" width="1240" height="1750" style="position:absolute;top:0px;left:0px">
+  <canvas id="imageView" width="1240" height="1750" style="position:absolute;top:0px;left:0px">
+  </canvas>
+</div>
+
+<script type="text/javascript">
+	var ctx = document.getElementById('imageView').getContext('2d');
+	var img = new Image();
+	img.src = "{{=content}}";
+	img.onload = function () {
+		ctx.drawImage(img,0,0,1240,1750);
+	}	
+</script>	
+
+
+
+
+
+<script type="text/javascript" src="{{=URL(r=request,c='static',f='canvas/example5.js')}}"></script>
+
+	
+</body>
+</html>
+

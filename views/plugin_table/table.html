@@ -1,0 +1,29 @@
+{{extend 'layout.html'}}
+
+<script src="{{=URL('static','plugins/bootbox/bootbox.min.js')}}"></script>
+
+<script src="{{=URL(r=request,c='static',f='plugin_app/sumoselect/jquery.sumoselect.min.js')}}"></script>
+<link href="{{=URL(r=request,c='static',f='plugin_app/sumoselect/sumoselect.css')}}" rel="stylesheet" />
+
+<script type="text/javascript">
+
+	function CheckAll() {
+		$('#explorer_view :checkbox').each(function () {
+			$(this).prop('checked', document.getElementById("check_all").checked);
+		});         
+	}  
+		
+	$(document).ready(function(){
+		window.asd = $('.SlectBox').SumoSelect({ csvDispCount: 3 });
+	});
+		
+</script>
+
+
+<div class="row">
+	<div class="col-lg-12">
+		{{=content}}
+    </div>
+</div>
+
+

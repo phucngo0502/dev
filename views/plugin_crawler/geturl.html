@@ -1,0 +1,16 @@
+{{extend 'layout.html'}}
+	
+<div class="row">
+	{{=content}}
+</div>
+         	
+
+<script type="text/javascript">
+
+	function CheckAll() {
+		$('#crawler_result :checkbox').each(function () {
+			$(this).prop('checked', document.getElementById("check_all").checked);
+		});         
+	}  
+		
+</script>

@@ -1,0 +1,58 @@
+﻿{{extend 'plugin_tools/layout.html'}}
+
+<div class="placeholders">
+	
+		<div class="placeholder">
+				
+			<a href="{{=URL(f='select_table',args='backup')}}">
+				  <img class="img-responsive" src="{{=URL(c='static',f='plugin_tools/images/save.png')}}">
+				  <h4>Sao lưu dữ liệu</h4>
+			</a>
+		</div>
+		
+		<div class="placeholder">
+				
+			<a href="{{=URL(f='select_table',args='restore')}}">
+				  <img class="img-responsive" src="{{=URL(c='static',f='plugin_tools/images/reset.png')}}">
+				  <h4>Phục hồi dữ liệu</h4>
+			</a>
+		</div>
+		
+		<div class="placeholder">
+				
+			<a href="{{=URL(f='insert')}}">
+				  <img class="img-responsive" src="{{=URL(c='static',f='plugin_tools/images/import-128.png')}}">
+				  <h4>Cập nhật từ Excel</h4>
+			</a>
+		</div>
+		
+		<div class="placeholder">
+				
+			<a href="{{=URL(f='select_table',args='xls')}}">
+				  <img class="img-responsive" src="{{=URL(c='static',f='plugin_tools/images/share-128.png')}}">
+				  <h4>Trích xuất ra Excel</h4>
+			</a>
+		</div>
+		{{if request.is_local:}}
+		<div class="placeholder">
+			<a href="{{=URL(f='process')}}">
+				  <img class="img-responsive" src="{{=URL(c='static',f='plugin_tools/images/equlizer-128.png')}}">
+				  <h4>Dữ liệu -> Qui trình</h4>
+			</a>
+		</div>
+		<div class="placeholder">
+				
+			<a href="{{=URL(c='appadmin',f='index')}}">
+				  <img class="img-responsive" src="{{=URL(c='static',f='plugin_tools/images/12-128.png')}}">
+				  <h4>Quản lý dữ liệu</h4>
+			</a>
+		</div>
+		<div class="placeholder">
+				
+			<a href="{{=URL(f='select_table',args='delete')}}">
+				  <img class="img-responsive" src="{{=URL(c='static',f='plugin_tools/images/policy-128.png')}}">
+				  <h4>Xóa dữ liệu</h4>
+			</a>
+		</div>		
+		{{pass}}
+	</div>

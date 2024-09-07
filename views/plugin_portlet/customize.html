@@ -1,0 +1,29 @@
+{{extend 'layout.html'}}
+
+<script type="text/javascript">
+function view(item) {
+	var data = '&id='+item.value; 
+	$.ajax({
+		url: "{{=URL(r=request,c='plugin_portlet',f='get_map',args=request.args,vars=request.vars)}}",
+		type: "GET",
+		data: data,
+		cache: true,
+		success: function (html) {
+			maps(html);
+		}
+	});	
+}
+function maps(html) {
+	if (html!='') {
+		var maps = html.split('|');
+		for (i in maps) {
+			var f = maps[i].split(';'); 
+			$(f[0]).replaceWith(f[1]);
+		}
+		
+	}
+}
+
+</script>
+
+{{=content}}

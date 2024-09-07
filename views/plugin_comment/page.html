@@ -1,0 +1,157 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+  <head> 
+    <meta charset="utf-8"> 
+	<meta name="viewport" content="width=1024px, maximum-scale=1.0" /> 
+    <title>Canvas</title> 
+    <style type="text/css"><!--
+		body{margin:0;padding:0; font-family:Arial;}
+		#container{position:relative;}
+		#sketchpad{ border: 1px solid #000;}		
+    --></style> 
+
+<script type="text/javascript" src="{{=URL(r=request,c='static',f='js/jquery.js')}}"></script>	
+<script type="text/javascript">
+	var is_update = true;
+	function update() {
+		var url = '/app/plugin_canvas/update/{{=request.args(0)}}/{{=request.args(1) or 1}}';
+		var data = document.getElementById('sketchpad').toDataURL("image/png");
+		$.ajax({
+			url: url,
+			type: "GET",
+			data: {'data':data},
+			success: function (html) {
+				$('#results').html(html);
+			}
+		});
+		is_update = true;
+		return false;	
+	}
+	
+	window.addEventListener('load',function(){
+		// get the canvas element and its context
+		var canvas = document.getElementById('sketchpad');
+		var context = canvas.getContext('2d');
+
+		context.fillStyle = '#00f'; // red
+		context.strokeStyle = '#ff0000'; // red
+		context.lineWidth = 2;
+		
+		// create a drawer which tracks touch movements
+		var drawer = {
+			isDrawing: false,
+			touchstart: function(coors){
+				context.beginPath();
+				context.moveTo(coors.x, coors.y);
+				this.isDrawing = true;
+			},
+			touchmove: function(coors){
+				if (this.isDrawing) {
+					if ($("input[name='drawtype']:checked").val()=='gum') {
+						context.clearRect(coors.x, coors.y, 30, 30);
+						is_update = false;
+					} else if ($("input[name='drawtype']:checked").val()=='pencil'){
+						context.lineTo(coors.x, coors.y);
+						context.stroke();
+						is_update = false;
+					}
+				}
+			},
+			touchend: function(coors){
+				if (this.isDrawing) {
+			        this.touchmove(coors);
+			        this.isDrawing = false;
+				}
+			}
+		};
+		// create a function to pass touch events and coordinates to drawer
+		function draw(event){
+			// get the touch coordinates
+			var coors = {
+				x: event.targetTouches[0].pageX,
+				y: event.targetTouches[0].pageY
+			};
+			// pass the coordinates to the appropriate handler
+			drawer[event.type](coors);
+		}
+		
+		// attach the touchstart, touchmove, touchend event listeners.
+	    canvas.addEventListener('touchstart',draw, false);
+	    canvas.addEventListener('touchmove',draw, false);
+	    canvas.addEventListener('touchend',draw, false);
+
+		// prevent elastic scrolling
+		document.body.addEventListener('touchmove',function(event){
+			if ((event.targetTouches[0].pageY<1130)&&(event.targetTouches[0].pageX<800)) {
+				event.preventDefault();
+			}
+		},false);	// end body.onTouchMove
+
+		// prevent elastic scrolling
+		document.body.addEventListener('touchend',function(event){
+			localStorage.setItem('canvas{{=request.args(0)}}_{{=request.args(1) or 1}}', canvas.toDataURL('image/png'));
+		},false);	// end body.onTouchMove
+		
+	},false);	// end window.onLoad
+	
+	window.onbeforeunload = function (e) {
+		var e = e || window.event;
+		// For IE and Firefox
+		if (e) {
+			e.returnValue = '';
+		}
+		// For Chrome and Safari
+		if (is_update==false) {return update();}
+	};
+	</script> 
+
+  </head> 
+<body> 
+  
+<div id="container"> 
+	<canvas id="sketchpad" width="800" height="1130" style="position:absolute;top:0px;left:0px;"></canvas> 
+	<img width="800" height="1130" src="{{=content.uri_content}}">
+	<!--iframe width="800" height="1130" src="/app/static/canvas/gm.pdf"-->
+	
+</div>
+	
+<div style="position:fixed;top:0px;left:802px;">	
+	<input id="addnewsubmit" value="Save" type="button"></input>
+	<input id="clear" value="Clear" type="button"></input>
+	<input id="restore" value="Restore" type="button"></input><br><br>
+	<input name="drawtype" value="view" type="radio" checked="checked">View</input>
+	<input name="drawtype" value="pencil" type="radio">Pencil</input>
+	<input name="drawtype" value="gum" type="radio">Gum</input><br><br>
+	{{=content.pages}}	
+</div>
+	
+<script type="text/javascript">
+	var context = document.getElementById('sketchpad').getContext('2d');
+	var img = new Image();
+	img.src = "{{=content.uri_comment}}";
+	img.onload = function () {context.drawImage(img,0,0);}	
+	
+	$(document).ready(function() {
+		$('#addnewsubmit').click(function () {
+			update()	
+		});
+	});
+	
+	// bind event handler to clear button
+	document.getElementById('clear').addEventListener('click', function() {
+		var canvas = document.getElementById('sketchpad');
+		var context = canvas.getContext('2d');      
+		context.clearRect(0, 0, canvas.width, canvas.height);
+	}, false);
+	
+	document.getElementById('restore').addEventListener('click', function() {
+		var context = document.getElementById('sketchpad').getContext('2d');  
+		img = new Image();
+		img.src =  localStorage.getItem('canvas{{=request.args(0)}}_{{=request.args(1) or 1}}');
+		context.drawImage(img,0,0);
+	}, false);
+			  
+</script>
+	
+</body> 
+</html>

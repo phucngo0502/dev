@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>{{=response.title}}</title>	
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="keywords" content="{{=response.keywords}}" />
+	<meta name="description" content="{{=response.description}}" />
+	{{
+    response.files.insert(0,URL('static','css/web2py.css'))
+  response.files.insert(1,URL('static','bootstrap/css/bootstrap.min.css'))
+  response.files.insert(1,URL('static','bootstrap/css/bootstrap-theme.css'))
+  response.files.insert(2,URL('static','css/bootstrap-responsive.min.css'))
+  response.files.insert(3,URL('static','css/web2py_bootstrap.css'))
+   response.files.insert(3,URL('static','plugin_app/css/admin.css'))}}
+    {{response.files.append(URL(request.application,'static','plugin_app/css/login.css'))}}
+	{{#------ include web2py specific js code (jquery, calendar, form stuff) ------}}
+	{{include 'web2py_ajax.html'}}
+<style>
+
+</style>    
+</head>
+
+<script language="javascript"><!--
+      jQuery("#web2py_user_form input:visible:enabled:first").focus();
+      //--></script>
+
+<body>
+ <div class="navbar navbar-inverse navbar-fixed-top navbar-ivinh">
+    
+ 
+         <a class="navbar-brand title_page" href="#">Hệ thống quản trị trang thông tin điện tử</a>
+  </div><!--/top navbar -->
+
+<div id="container">
+<br/>
+<br/>
+	<div id="wrapper">        
+	
+		<div id="page"> 
+			<div id="page_content">
+				<div id="div_midle">
+					<table width="100%" cellspacing="0" cellpadding="0" border="0">
+						<tbody><tr>
+							<td width="100%">
+								<div id="column_right">
+									
+									<div class="clearfix"></div>
+									
+   
+<div class="wrapper_login1" style=" width: 400px; margin: 0 auto; ">
+	<div id="login_wrapper">
+	<div id="login_right">
+			
+		<div id="login_body_window">
+			<div class="inner">
+				
+				<h2>{{=T('Đăng nhập hệ thống')}}</h2>
+				<h4 class="ghi_chu"> <br/></h4>
+				<div id="web2py_user_form">
+				  {{=form}}
+				  {{if request.args(0)=='login':}}
+				  {{if not 'register' in auth.settings.actions_disabled:}}
+				  <br/>
+				  <a href="{{=URL(args='register')}}">{{=T('Register')}}</a>
+				  {{pass}}
+				  {{if not 'request_reset_password' in auth.settings.actions_disabled:}}
+				  <br/>
+				  <a href="{{=URL(args='request_reset_password')}}">{{=T('Lost Password')}}</a>
+				  {{pass}}
+				  {{pass}}
+				  
+				</div>
+
+			</div>
+		</div>
+		</div>
+	
+	</div>
+
+</div>
+
+									
+								</div>
+							</td>
+						</tr>
+                       
+					</tbody></table>
+				</div>
+			</div>
+		  <div style="clear: both;"></div><!-- Clear the divs -->
+		  
+		</div><!-- page -->                         
+		 <div class="clearfix"></div>
+    <div class="bottom">
+
+        <div class="wrapper_login">
+        <div id="login_lef">
+            Đơn vị chủ quản:<b> </b><br/>
+            Đơn vị quản trị: <b> </b>
+        </div>
+        <div id="login_right">
+        Địa chỉ: <b>  </b><br/>
+        Điện thoại: <b> </b>
+        
+        </div>
+     </div>
+         
+      </div>
+      </div><!-- wrapper -->
+    </div>
+</body>
+</html>

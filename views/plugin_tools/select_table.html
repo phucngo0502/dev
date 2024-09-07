@@ -1,0 +1,143 @@
+{{extend 'plugin_tools/layout.html'}}
+<script src="{{=URL(r=request,c='static',f='js/jquery.js')}}" type="text/javascript"></script>
+<script src="{{=URL(r=request,c='static',f='plugin_tools/datatables/media/js/jquery.dataTables.min.js')}}" type="text/javascript"></script>
+<link href="{{=URL(r=request,c='static',f='plugin_tools/datatables/media/css/demo_page.css')}}" rel="stylesheet" type="text/css" />
+<link href="{{=URL(r=request,c='static',f='plugin_tools/datatables/media/css/demo_table.css')}}" rel="stylesheet" type="text/css" />
+<link href="{{=URL(r=request,c='static',f='plugin_tools/datatables/examples/examples_support/themes/smoothness/jquery-ui-1.8.4.custom.css')}}" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript" charset="utf-8">
+	(function($) {
+	/*
+	 * Function: fnGetColumnData
+	 * Purpose:  Return an array of table values from a particular column.
+	 * Returns:  array string: 1d data array 
+	 * Inputs:   object:oSettings - dataTable settings object. This is always the last argument past to the function
+	 *           int:iColumn - the id of the column to extract the data from
+	 *           bool:bUnique - optional - if set to false duplicated values are not filtered out
+	 *           bool:bFiltered - optional - if set to false all the table data is used (not only the filtered)
+	 *           bool:bIgnoreEmpty - optional - if set to false empty values are not filtered from the result array
+	 * Author:   Benedikt Forchhammer <b.forchhammer /AT\ mind2.de>
+	 */
+	$.fn.dataTableExt.oApi.fnGetColumnData = function ( oSettings, iColumn, bUnique, bFiltered, bIgnoreEmpty ) {
+		// check that we have a column id
+		if ( typeof iColumn == "undefined" ) return new Array();	
+		// by default we only wany unique data
+		if ( typeof bUnique == "undefined" ) bUnique = true;	
+		// by default we do want to only look at filtered data
+		if ( typeof bFiltered == "undefined" ) bFiltered = true;
+		// by default we do not wany to include empty values
+		if ( typeof bIgnoreEmpty == "undefined" ) bIgnoreEmpty = true;
+		// list of rows which we're going to loop through
+		var aiRows;
+		var asResultData = new Array();
+		// use only filtered rows
+		if (bFiltered == true) aiRows = oSettings.aiDisplay; 
+		// use all rows
+		else aiRows = oSettings.aiDisplayMaster; // all row numbers
+		// set up data array	
+		for (var i=0,c=aiRows.length; i<c; i++) {
+			iRow = aiRows[i];
+			var aData = this.fnGetData(iRow);
+			var sValue = aData[iColumn];
+			// ignore empty values?
+			if (bIgnoreEmpty == true && sValue.length == 0) continue;
+			// ignore unique values?
+			else if (bUnique == true && jQuery.inArray(sValue, asResultData) > -1) continue;
+			// else push the value onto the result data array
+			else asResultData.push(sValue);
+			}
+		return asResultData;
+	}}(jQuery));
+
+	function fnCreateSelect( aData )
+	{
+		var r='<select><option value=""></option>', i, iLen=aData.length;
+		for ( i=0 ; i<iLen ; i++ )
+		{
+			r += '<option value="'+aData[i]+'">'+aData[i]+'</option>';
+		}
+		return r+'</select>';
+	}
+</script>
+
+
+<div id="box_editor">
+	<div class="content">
+		<div id="demo">
+			<form enctype="multipart/form-data" action="{{=URL(args=["del_confirm"] if delete else request.args,vars={} if delete else request.vars)}}" method="post">
+				<div style="text-align:left; padding-bottom:1em;">
+					<button type="submit">{{=T('Chấp nhận xóa dữ liệu đã chọn') if delete else T('Submit')}}</button>
+				</div>
+
+				<table cellpadding="0" cellspacing="0" border="0" class="display" id="example">
+					<thead>
+						<tr>
+							<th width=5px><input type="checkbox" id="check_all" /></th>
+							<th>{{=T('Table name')}}</th>
+						</tr>
+					</thead>
+					<tbody>
+						{{for table in tables:}}
+						<tr>
+							{{=TD(INPUT(_type='checkbox', _name=table, _checked=delete))}}
+							{{=TD(table)}}
+						</tr>
+						{{pass}}
+					</tbody>
+					<tfoot>
+						<tr>
+							<th></th>
+							<th></th>
+						</tr>
+					</tfoot>
+				</table>
+			</form>
+		</div>
+		<div class="spacer"></div>
+	</div> 
+</div>
+
+
+<script type="text/javascript" charset="utf-8">
+	var oTable;
+	$(document).ready(function() {
+		oTable = $('#example').dataTable({
+			"iDisplayLength": 50,
+			"aLengthMenu": [[50, 100, 500, 1000], [50, 100, 500, 1000]],
+			"sDom": 'T<"clear"><"fg-toolbar ui-widget-header ui-corner-tl ui-corner-tr ui-helper-clearfix"lfr>t<"fg-toolbar ui-widget-header ui-corner-bl ui-corner-br ui-helper-clearfix"ip>',
+			"sPaginationType": "full_numbers",
+			//"bJQueryUI": true,
+			"oLanguage": {
+				"sProcessing":   "Đang xử lý...",
+				"sLengthMenu": "Hiển thị _MENU_ dòng trong trang",
+				"sZeroRecords": "Không có dữ liệu",
+				"sInfo": "Hiển thị _START_ đến _END_ của _TOTAL_ dòng dữ liệu",
+				"sInfoEmtpy": "Hiển thị 0 đến 0 của 0 dòng",
+				"sInfoFiltered": "(lọc từ _MAX_ dòng)",
+				"sSearch": "Tìm:",
+				"sUrl":          "",
+				"oPaginate": {
+						"sFirst": "Đầu",
+						"sPrevious": "Trước",
+						"sNext": "Tiếp",
+						"sLast": "Cuối"
+				}
+			},
+		});
+		
+		$('#check_all').click( function() {
+		$('input', oTable.fnGetNodes()).attr('checked',this.checked);
+		} );		
+		
+		/* Add a select menu for each TH element in the table footer */
+		$("tfoot th").each( function ( i ) {
+			if ((i>0)&(i<5)){
+				this.innerHTML = fnCreateSelect( oTable.fnGetColumnData( i ) );
+				$('select', this).change( function () {
+					oTable.fnFilter( $(this).val(), i );
+				} );
+			}
+		} );
+		
+	} );
+</script>

@@ -1,0 +1,87 @@
+{{extend 'admin/layout.html'}}
+
+<script src="{{=URL('static','plugins/bootbox/bootbox.min.js')}}"></script>
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Modals</h1>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+	
+    <p> <a class="alert" href=# id='demo_1'>demo1</a> </p>
+    <p> <a class="alert" href=# id='demo_2'>demo2</a> </p>
+    <p> <a class="alert" href=# id='demo_3'>demo3</a> </p>
+    <p> <a class="alert" href=# id='demo_4'>demo4</a> </p>
+ 
+    <!-- JS dependencies -->
+ 
+    <!-- bootbox code -->
+    <script>
+        $('#demo_1').click(function(){
+                bootbox.alert("Hello world!");    
+            });
+            //end #demo_1
+
+		$('#demo_2').click(function(){
+			bootbox.alert("Hello world!", function() {
+				alert("Hello world callback");
+			});  
+		});
+		//end #demo_2
+	
+		$('#demo_3').click(function(){
+			bootbox.confirm("Are you sure?", function(result) {
+			   if (result == true) {
+					alert("Prompt dismissed");
+				} else {
+					alert("Hi <b>"+result+"</b>");
+				}
+			}); 
+		});
+		//end #demo_3
+
+		$('#demo_4').click(function(){
+			bootbox.prompt("What is your name?", function(result) {
+				if (result === null) {
+					alert("Prompt dismissed");
+				} else {
+					alert("Hi <b>"+result+"</b>");
+				}
+			});
+		});
+    </script>
+
+{{  from bootrap import Modals}}
+	{{= Modals(source=URL(c='admin',f='modals.html'),id_load='#w_tab',rewrite=[(URL(c='admin',f='test.html'),'kiem_tra')])}}
+	<br/>
+	<br/>
+{{  from bootrap import Modals}}
+	{{= Modals(caption='Launch demo modal',size='modal-md',source=URL(c='admin',f='tem_icon.html'),id_load='#main')}}
+<!-- Button trigger modal -->
+<br/>
+<br/>
+
+
+<br/>
+<br/>
+<div role="tabpanel" id='w_tab'>
+
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
+    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
+    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
+    <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="home">...</div>
+    <div role="tabpanel" class="tab-pane" id="profile">...</div>
+    <div role="tabpanel" class="tab-pane" id="messages">...</div>
+    <div role="tabpanel" class="tab-pane" id="settings">...</div>
+  </div>
+
+</div>
+	
+	<div id='kiem_tra'></div>

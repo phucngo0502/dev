@@ -1,0 +1,103 @@
+{{extend 'admin/layout.html'}}
+<link href="{{=URL('static','plugins/tags-input/bootstrap-tagsinput.css')}}" rel="stylesheet">
+<link href="http://timschlechter.github.io/bootstrap-tagsinput/examples/lib/rainbow/themes/github.css" rel="stylesheet">
+
+<script src="{{=URL('static','plugins/tags-input/typeahead.bundle.min.js')}}"></script>
+<script src="{{=URL('static','plugins/tags-input/bootstrap-tagsinput.js')}}"></script>
+<script src="{{=URL('static','plugins/tags-input/bootstrap-tagsinput-angular.js')}}"></script>
+
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Tags Input</h1>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+
+<h2> Input </h2>
+	 <div class="bs-example">
+            <input type="text" value="Amsterdam,Washington,Sydney,Beijing,Cairo" data-role="tagsinput" />
+          </div>
+<br/>
+	<table class="table table-bordered table-condensed"><thead><tr><th>statement</th><th>returns</th></tr></thead><tbody><tr><td><code>$("input").val()</code></td><td><pre class="val"><code data-language="javascript" class="rainbow">"Amsterdam,Washington,Sydney,Beijing,Cairo"</code></pre></td></tr><tr><td><code>$("input").tagsinput('items')</code></td><td><pre class="items"><code data-language="javascript" class="rainbow">[<span class="string">"Amsterdam"</span>,"Washington","Sydney","Beijing","Cairo"]</code></pre></td></tr></tbody></table>
+
+<br/>
+
+<h2> Select </h2>
+<br/>
+<select multiple data-role="tagsinput">
+  <option value="Amsterdam">Amsterdam</option>
+  <option value="Washington">Washington</option>
+  <option value="Sydney">Sydney</option>
+  <option value="Beijing">Beijing</option>
+  <option value="Cairo">Cairo</option>
+</select>
+
+<br/>
+<table class="table table-bordered table-condensed"><thead><tr><th>statement</th><th>returns</th></tr></thead><tbody><tr><td><code>$("select").val()</code></td><td><pre class="val"><code data-language="javascript" class="rainbow">[<span class="string">"Amsterdam"</span>,"Washington","Sydney","Beijing","Cairo"]</code></pre></td></tr><tr><td><code>$("select").tagsinput('items')</code></td><td><pre class="items"><code data-language="javascript" class="rainbow">[<span class="string">"Amsterdam"</span>,"Washington","Sydney","Beijing","Cairo"]</code></pre></td></tr></tbody></table>
+
+
+
+<input type="text" value="Amsterdam,Washington" data-role="tagsinput" id='ty_1231'/>
+<script>
+
+var citynames = new Bloodhound({
+  datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+  queryTokenizer: Bloodhound.tokenizers.whitespace,
+  prefetch: {
+	url: '{{=URL(c="static",f="plugins/tags-input/citynames.json")}}'
+    filter: function(list) {
+      return $.map(list, function(cityname) {
+        return { name: cityname }; });
+    }
+  }
+});
+citynames.initialize();
+
+$('#ty_1231').tagsinput({
+  typeaheadjs: {
+    name: 'citynames',
+    displayKey: 'name',
+    valueKey: 'name',
+    source: citynames.ttAdapter()
+  }
+});
+</script>
+
+
+
+<br/>
+<h2>Objects as tags</h2>
+<br/>
+<input type="text" id='obj1232' name='obj-test'/>
+
+<br/>
+<a onclick="test_value();">test</a>
+<script>
+function test_value(){
+	alert(document.getElementById("obj1232").value);
+}
+var cities = new Bloodhound({
+  datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
+  queryTokenizer: Bloodhound.tokenizers.whitespace,
+  prefetch: '{{=URL(c="static",f="plugins/tags-input/cities.json")}}'
+});
+cities.initialize();
+
+var elt = $('#obj1232');
+elt.tagsinput({
+  itemValue: 'value',
+  itemText: 'text',
+  typeaheadjs: {
+    name: 'cities',
+    displayKey: 'text',
+    source: cities.ttAdapter()
+  }
+});
+elt.tagsinput('add', { "value": 1 , "text": "Amsterdam"   , "continent": "Europe"    });
+elt.tagsinput('add', { "value": 4 , "text": "Washington"  , "continent": "America"   });
+</script>
+
+</br/>
+<table class="table table-bordered table-condensed"><thead><tr><th>statement</th><th>returns</th></tr></thead><tbody><tr><td><code>$("input").val()</code></td><td><pre class="val"><code data-language="javascript" class="rainbow">"<span class="constant numeric">1</span>,<span class="constant numeric">4</span>,<span class="constant numeric">7</span>,<span class="constant numeric">10</span>,<span class="constant numeric">13</span>"</code></pre></td></tr><tr><td><code>$("input").tagsinput('items')</code></td><td><pre class="items"><code data-language="javascript" class="rainbow">[{"value":<span class="constant numeric">1</span>,"text":<span class="string">"Amsterdam"</span>,"continent":<span class="string">"Europe"</span>},{"value":<span class="constant numeric">4</span>,"text":<span class="string">"Washington"</span>,"continent":<span class="string">"America"</span>},{"value":<span class="constant numeric">7</span>,"text":<span class="string">"Sydney"</span>,"continent":<span class="string">"Australia"</span>},{"value":<span class="constant numeric">10</span>,"text":<span class="string">"Beijing"</span>,"continent":<span class="string">"Asia"</span>},{"value":<span class="constant numeric">13</span>,"text":<span class="string">"Cairo"</span>,"continent":<span class="string">"Africa"</span>}]</code></pre></td></tr></tbody></table>
+</br/>

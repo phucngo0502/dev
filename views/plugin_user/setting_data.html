@@ -1,0 +1,67 @@
+{{extend 'layout.html'}}
+<script src="{{=URL(c='static',f='plugin_portlet/codemirror/lib/codemirror.js')}}"></script>
+<link rel="stylesheet" href="{{=URL(c='static',f='plugin_portlet/codemirror/lib/codemirror.css')}}">
+<script src="{{=URL(c='static',f='plugin_portlet/codemirror/mode/javascript/javascript.js')}}"></script>
+<script src="{{=URL(c='static',f='plugin_portlet/codemirror/mode/xml/xml.js')}}"></script>
+<script src="{{=URL(c='static',f='plugin_portlet/codemirror/mode/css/css.js')}}"></script>
+
+<style>
+	.thumbnail {width:100%;}
+	.CodeMirror {
+	  border: 1px solid #eee;
+	  height: auto;
+	  min-height: 300px;
+	}	
+	
+	.divborder {
+		border: 1px solid gray;
+		padding: 2px;
+	}	
+	.divborder input{
+		align: float-right;
+	}	
+	
+</style>	
+
+<div class="row">
+	<div class="col-lg-2 col-md-3 col-sm-3 col-xs-1" id='sidebar'>
+		{{include 'plugin_portlet/menu-top.html'}}
+	</div>
+	<div class="col-lg-10 col-lg-offset-2 col-md-9 col-md-offset-3 col-sm-9  col-sm-offset-3 col-xs-11 col-xs-offset-1" id='portletview'>
+		{{=content}}
+    </div>
+</div>
+         	
+<script>
+	var editor = CodeMirror.fromTextArea(document.getElementById("textcontent"), {
+		lineNumbers: true,
+		mode: "text/html",
+		matchBrackets: true,
+	});
+	$('#submit').click(function(){
+		var data = '&textcontent=' + encodeURIComponent(editor.getValue());
+		$.ajax({
+			url: "{{=URL(f='update_text',args=request.args)}}",
+			type: "GET",
+			data: data,
+			cache: true,
+			success: function (html) {
+				if (html!='') {
+				}
+			}
+		});		
+	})
+	function analyse(){
+		var data = document.getElementById("preview").innerHTML;
+		$.ajax({
+			url: "{{=URL(f='get_analyse',args=request.args)}}",
+			type: "GET",
+			data: {'data':data},
+			cache: true,
+			success: function (html) {
+				$("#analyse_result").html(html);
+			}
+		});		
+	}
+	
+</script>

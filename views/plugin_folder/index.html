@@ -1,0 +1,95 @@
+{{extend 'layout.html'}}
+<script src="{{=URL(c='static',f='plugin_folder/jstree/jstree.min.js')}}"></script>
+<link rel="stylesheet" href="{{=URL(c='static',f='plugin_folder/jstree/themes/default/style.min.css')}}">
+
+ <div class="row">
+	{{=content}}
+</div>
+
+<script>
+	$(function () {
+		$('#jstree').jstree({
+			"checkbox" : {
+			  "keep_selected_style" : false
+			},
+			"core" : {
+				  "check_callback" : true
+				},				
+			"plugins" : ["dnd", "search", "state"]
+		});
+	});
+	
+	$('#jstree')
+		// listen for event
+		.on('move_node.jstree', function (e, data) {
+			if (data.old_parent==data.parent) {
+				var msg = 'Thay đổi vị trí của thư mục [' + data.node.text + '] từ ' + (data.old_position+1).toString() + ' đến ' + (data.position+1).toString() +'?';
+			} else {
+				var msg = 'Chuyển thư mục [' + data.node.text + '] từ [' + document.getElementById(data.old_parent+"_anchor").innerText + '] sang [' + document.getElementById(data.parent+"_anchor").innerText +']?';
+			}
+			if (confirm(msg)==false) {
+				$('#jstree').jstree(true).refresh();
+				return 0;
+			}
+			var data = '&id='+data.node.id+'&old_parent='+data.old_parent+'&parent='+data.parent+'&new_position='+(data.position+1).toString()+'&old_position='+(data.old_position+1).toString();			
+			$.ajax({
+				url: "{{=URL(r=request,c='plugin_folder',f='update_display',args=request.args,vars=request.vars)}}",
+				type: "GET",
+				data: data,
+				cache: true,
+				success: function (html) {
+					if (html!='') {
+						alert(html);
+					}
+				}
+			});				
+
+		});
+				
+		$('#jstree')
+			// listen for event
+			.on('activate_node.jstree', function (e, data) {
+			update(data.node.id);
+			});				
+			
+			
+</script>
+
+<script type="text/javascript">
+		
+	function add_new(id) {
+		var data = '&folder=' + id;
+		$.ajax({
+			url: "{{=URL(c='plugin_folder',f='form')}}",
+			type: "GET",
+			data: data,
+			cache: true,
+			success: function (html) {
+				$('#event_result').html(html);
+			}
+		});	
+	};		
+	
+	
+	function update(id) {
+		var data = '&folder=' + id;
+		window.location.replace("{{=URL(c='plugin_folder',f='index')}}/"+id)
+		<!-- $.ajax({ -->
+			<!-- url: "{{=URL(c='plugin_folder',f='form')}}", -->
+			<!-- type: "GET", -->
+			<!-- data: data, -->
+			<!-- cache: true, -->
+			<!-- success: function (html) { -->
+				<!-- $('#event_result').html(html); -->
+			<!-- } -->
+		<!-- });	 -->
+	};		
+	
+	
+	function check() {
+	};		
+	
+</script>
+
+
+          

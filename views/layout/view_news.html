@@ -1,0 +1,7 @@
+{{extend 'layout/home13.html'}}
+{{if request.function =='read': }}
+	{{=portlet.display(4)}}
+	{{=portlet.display(8)}}
+{{else:}}
+	{{=portlet.display(3)}}
+{{pass}}

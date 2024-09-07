@@ -1,0 +1,8 @@
+{{extend 'layout/theme1/home13.html'}}
+{{if request.function =='read': }}
+	{{=portlet.display(4)}}
+	{{=portlet.display(8)}}
+	{{=portlet.display(24)}}
+{{else:}}
+	{{=portlet.display(30)}}
+{{pass}}
